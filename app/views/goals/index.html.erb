@@ -1,5 +1,8 @@
 <h1>Goals</h1>
 
 <% @goals.each do |g| %>
+  <%= link_to(g) do %>
+    <p>Check out this goal</p>
+  <% end %>
   <p><%= g.description %></p>
 <% end %>

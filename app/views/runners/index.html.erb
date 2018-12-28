@@ -1,5 +1,7 @@
 <h1>Runners</h1>
 
 <% @runners.each do |r| %>
-  <p><%= r.first_name %> <%= r.last_name %></p>
+  <%= link_to(r) do %>
+    <p><%= r.first_name %> <%= r.last_name %></p>
+  <% end %>
 <% end %>

@@ -1,6 +1,9 @@
 <h1>Followups</h1>
 
 <% @followups.each do |f| %>
+  <%= link_to(f) do %>
+    <p>See the details of this run!</p>
+  <% end %>
   <%= f.course_review %>
   <p>Rating: <%= f.course_rating %></p>
   <p>Soreness: <%= f.soreness %></p>
