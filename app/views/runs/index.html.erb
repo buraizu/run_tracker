@@ -1,0 +1,8 @@
+<h1>Runs</h1>
+
+<% @runs.each do |run| %>
+  <p><%= run.course %></p>
+  <p><%= Runner.find_by(id: run.runner_id).name %></p>
+  <p><%= Goal.find_by(id: run.goal_id).description %></p>
+  <p><%= Followup.find_by(id: run.followup_id).course_rating %></p>
+<% end %>
