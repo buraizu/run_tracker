@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 1) do
   create_table "runners", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "password_digest"
   end
 
   create_table "runs", force: :cascade do |t|

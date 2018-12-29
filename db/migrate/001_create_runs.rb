@@ -4,6 +4,7 @@ class CreateRuns < ActiveRecord::Migration[5.0]
     create_table :runners do |t|
       t.string :first_name
       t.string :last_name
+      t.string :password_digest
     end
 
     create_table :goals do |t|
