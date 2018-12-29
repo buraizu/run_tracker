@@ -5,8 +5,8 @@
     <p>Check out this run!</p>
   <% end %>
   <p><%= run.course %></p>
-  <p><%= Runner.find_by(id: run.runner_id).first_name %></p>
+  <p><%= Runner.find_by(id: run.runner_id).username %></p>
   <p><%= Goal.find_by(id: run.goal_id).description %></p>
-  <p><%= Followup.find_by(id: run.followup_id).course_rating %></p>
+  <p></p>
 
 <% end %>

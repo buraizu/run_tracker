@@ -1,7 +1,11 @@
 <h2>Run: </h2>
 
-<h3><%= Runner.find_by(id: @run.runner_id).first_name %></h3>
+<h3><%= Runner.find_by(id: @run.runner_id).username %></h3>
 
-<h3><%= Goal.find_by(id: @run.goal_id).description %></h3>
+<h3>Goal: <%= Goal.find_by(id: @run.goal_id).description %></h3>
+<h3>Completed: <%= Goal.find_by(id: @run.goal_id).completed %></h3>
 
-<h3><%= Followup.find_by(id: @run.followup_id).course_rating %></h3>
+<p>Course: <%= @run.course %></p>
+<p>Description: <%= @run.description %></p>
+<p>Rating: <%= @run.rating %></p>
+<p>Difficulty: <%= @run.difficulty %></p>

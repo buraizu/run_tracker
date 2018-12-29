@@ -1,7 +1,7 @@
 <h1>Runners</h1>
 
 <% @runners.each do |r| %>
-  <%= link_to(r) do %>
+  <%= link_to(r.username) do %>
     <p><%= r.first_name %> <%= r.last_name %></p>
   <% end %>
 <% end %>
