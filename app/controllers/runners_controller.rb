@@ -8,8 +8,25 @@ class RunnersController < ApplicationController
     @runner = Runner.new
   end
 
+  def create
+    runner = Runner.new(runner_params)
+    if runner.valid?
+      runner.save
+      session[:runner_id] = runner[:id]
+      redirect_to "/runners/#{runner.id}"
+    else
+      redirect_to "/"
+    end
+  end
+
   def show
     @runner = Runner.find_by(id: params[:id])
   end
+
+  private
+
+    def runner_params
+      params.require(:runner).permit(:first_name, :last_name, :password)
+    end
 
 end
