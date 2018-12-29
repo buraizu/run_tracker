@@ -5,11 +5,11 @@ class RunsController < ApplicationController
   end
 
   def new
-
+    raise params.inspect
   end
 
   def create
-
+    raise params.inspect
   end
 
   def show

@@ -10,8 +10,23 @@
   <% end %>
 
 <h3>Ready to go for a run?</h3>
-<%= link_to "New Run", new_run_path %>
 
+<%= form_for @runner.runs.build do |f| %>
+  <%= f.hidden_field :runner_id %>
+  <%= f.label "Course" %>
+  <%= f.text_field :course %>
+  <%= f.label "Description" %>
+  <%= f.text_area :description %>
+  <%= f.label "Distance" %>
+  <%= f.text_area :distance %>
+  <%= f.label "Rating" %>
+  <%= f.text_area :rating %>
+  <%= f.label "Difficulty" %>
+  <%= f.text_area :difficulty %>
+  <%= f.collection_select :description, Goal.all, :description, :description %>
+
+  <%= f.submit %>
+<% end %>
 
 
 <p><%= link_to "Log Out", "/logout", method: :post %></p>

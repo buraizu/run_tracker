@@ -1,39 +1,14 @@
-<%= form_for @runner do |f| %>
-
-  <%= f.label "Goal description" %>
-  <%= f.fields_for :goals, Goal.new do |goal_builder| %>
-    <%= goal_builder.text_field :description %>
-  <% end %>
-  <br />
-  <%= f.submit %>
-
-<% end %>
 
 
 
-<%= f.label "Goal description" %>
-<br />
-<%= collection_select :goal, :description, Goal.all, :description, :description %>
-
-<p>Or add a new goal: </p>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<br />
-<%= f.submit %>
 
 
 
-<%= form_tag(controller: "sessions", action: "create", method: "post") do %>
+You must include and make use of a nested resource with the appropriate RESTful URLs.
 
-  <br />
-  <%= label_tag("Password") %>
-  <br />
-  <%= password_field_tag(:password) %>
-  <br />
-  <%= submit_tag("Sign In") %>
-<% end %>
+• You must include a nested new route with form that relates to the parent resource
 
-<p><%= link_to "Set a new goal", "/goals/new", method: :get %></p>
+• You must include a nested index or show route
 
 # README
 
