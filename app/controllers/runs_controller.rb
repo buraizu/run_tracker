@@ -19,11 +19,17 @@ class RunsController < ApplicationController
   private
 
     def run_params
-      params.require(:run).permit(:distance, :course, :description, :rating, :difficulty, :runner_id, :goal_id)
+      params.require(:run).permit(:distance, :course, :review, :rating, :difficulty, :runner_id, :goal_id)
     end
 
 end
 
-# def runner_params
-#   params.require(:runner).permit(:first_name, :last_name, :username, :password)
-# end
+
+# "run"=>
+# {"runner_id"=>"1",
+#   "course"=>"Shoreview",
+#   "review"=>"Hilly trails",
+#   "distance"=>"12",
+#   "rating"=>"7",
+#    "difficulty"=>"8",
+#    "goal_id"=>"1"}

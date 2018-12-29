@@ -16,14 +16,14 @@
   <%= f.label "Course" %>
   <%= f.text_field :course %>
   <%= f.label "Description" %>
-  <%= f.text_area :description %>
+  <%= f.text_area :review %>
   <%= f.label "Distance" %>
-  <%= f.text_area :distance %>
+  <%= f.text_field :distance %>
   <%= f.label "Rating" %>
-  <%= f.text_area :rating %>
+  <%= f.text_field :rating %>
   <%= f.label "Difficulty" %>
-  <%= f.text_area :difficulty %>
-  <%= f.collection_select :description, Goal.all, :description, :description %>
+  <%= f.text_field :difficulty %>
+  <%= f.collection_select(:goal_id, Goal.all, :id, :description) %>
 
   <%= f.submit %>
 <% end %>
