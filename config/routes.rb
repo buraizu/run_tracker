@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :runners
   resources :runs
   resources :goals
-  resources :followups
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'

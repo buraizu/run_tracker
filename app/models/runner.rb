@@ -2,10 +2,11 @@ class Runner < ActiveRecord::Base
   has_secure_password
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :username, presence: true
 
   has_many :runs
   has_many :goals, through: :runs
-  has_many :followups, through: :runs
+
 end
 
 
