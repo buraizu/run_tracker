@@ -2,4 +2,14 @@
 
 <p><%= @runner.first_name %> <%= @runner.last_name %></p>
 
+<h3>Current Goals</h3>
+  <% @runner.goals.each do |g| %>
+    <h4><%= g.description %></h4>
+    <p><%= g.completed %></p>
+    <br />
+  <% end %>
+
+  <h4>Ready for a new goal?</h4>
+  <p><%= link_to "Set a new goal", "/goals/new", method: :get %></p>
+
 <p><%= link_to "Log Out", "/logout", method: :post %></p>
