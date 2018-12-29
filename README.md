@@ -1,6 +1,6 @@
 
 <%= form_tag(controller: "sessions", action: "create", method: "post") do %>
-  <%= collection_select :runner, :username, Runner.all, :username, :username %>
+
   <br />
   <%= label_tag("Password") %>
   <br />
@@ -9,7 +9,7 @@
   <%= submit_tag("Sign In") %>
 <% end %>
 
-
+<p><%= link_to "Set a new goal", "/goals/new", method: :get %></p>
 
 # README
 

@@ -10,6 +10,19 @@
   <% end %>
 
   <h4>Ready for a new goal?</h4>
-  <p><%= link_to "Set a new goal", "/goals/new", method: :get %></p>
+
+<%= form_for @runner.goals.build do |f| %>
+  
+  <%= f.label "Goal description" %>
+  <br />
+  <%= collection_select :goal, :description, Goal.all, :description, :description %>
+
+  <p>Or add a new goal: </p>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br />
+  <%= f.submit %>
+
+<% end %>
 
 <p><%= link_to "Log Out", "/logout", method: :post %></p>
