@@ -23,6 +23,10 @@ class RunnersController < ApplicationController
     @runner = Runner.find_by(id: params[:id])
   end
 
+  def update
+
+  end
+
   private
 
     def runner_params

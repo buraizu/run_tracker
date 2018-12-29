@@ -1,6 +1,7 @@
 class Goal < ActiveRecord::Base
   has_many :runs
-  accepts_nested_attributes_for :runners
+  has_many :runners, through: :runs
+
   def new
     raise params.inspect
   end

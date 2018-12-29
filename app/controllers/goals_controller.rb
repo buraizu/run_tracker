@@ -13,5 +13,3 @@ class GoalsController < ApplicationController
   end
 
 end
-
- "goal"=>{"description"=>"Run a 5k"}, "commit"=>"Create Goal", "controller"=>"goals", "action"=>"create"} permitted: false>

@@ -7,7 +7,18 @@ class Runner < ActiveRecord::Base
   has_many :runs
   has_many :goals, through: :runs
 
+
+
 end
+
+# def goals_attributes=(goals_hashes)         # Not sure about any of this
+#   goals_hashes.each do |i, goal_attributes|
+#     if goal_attributes[:description].present?
+#       goal = Goal.find_or_create_by(description: goal_attributes[:description])
+#       self.goals << goal
+#     end
+#   end
+# end
 
 
 # validates :title, presence: true

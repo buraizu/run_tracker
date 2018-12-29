@@ -1,3 +1,27 @@
+<%= form_for @runner do |f| %>
+
+  <%= f.label "Goal description" %>
+  <%= f.fields_for :goals, Goal.new do |goal_builder| %>
+    <%= goal_builder.text_field :description %>
+  <% end %>
+  <br />
+  <%= f.submit %>
+
+<% end %>
+
+
+
+<%= f.label "Goal description" %>
+<br />
+<%= collection_select :goal, :description, Goal.all, :description, :description %>
+
+<p>Or add a new goal: </p>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<br />
+<%= f.submit %>
+
+
 
 <%= form_tag(controller: "sessions", action: "create", method: "post") do %>
 
