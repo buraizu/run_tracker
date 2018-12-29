@@ -1,0 +1,15 @@
+<%= form_for @runner, controller: 'runners', action: 'create' do |f| %>
+
+  <h1>Sign Up</h1>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <br />
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <br />
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br />
+  <%= f.submit "Create Runner" %>
+
+<% end %>

@@ -4,6 +4,10 @@ class RunnersController < ApplicationController
     @runners = Runner.all
   end
 
+  def new
+    @runner = Runner.new
+  end
+
   def show
     @runner = Runner.find_by(id: params[:id])
   end
