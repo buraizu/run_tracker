@@ -1,3 +1,16 @@
+
+<%= form_tag(controller: "sessions", action: "create", method: "post") do %>
+  <%= collection_select :runner, :username, Runner.all, :username, :username %>
+  <br />
+  <%= label_tag("Password") %>
+  <br />
+  <%= password_field_tag(:password) %>
+  <br />
+  <%= submit_tag("Sign In") %>
+<% end %>
+
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
