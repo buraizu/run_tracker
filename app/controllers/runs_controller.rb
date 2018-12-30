@@ -9,7 +9,11 @@ class RunsController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    run = Run.new(run_params)
+    if run.valid?
+      run.save
+      redirect_to "/runs/#{run.id}"
+    end
   end
 
   def show
