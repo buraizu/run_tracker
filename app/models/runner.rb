@@ -3,6 +3,10 @@ class Runner < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true
+  validates :goals, uniqueness: {
+  scope: :description, message: "You already have this goal"
+  }
+
 
   has_many :runs
   has_many :goals, through: :runs

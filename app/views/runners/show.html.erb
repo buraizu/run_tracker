@@ -2,8 +2,8 @@
 
 <p><%= @runner.first_name %> <%= @runner.last_name %></p>
 
-<h3>Current Goals</h3>
-  <% @runner.goals.each do |g| %>
+<h3>Your Current Goal</h3>
+  <% @runner.goals.first do |g| %>
     <h4><%= g.description %></h4>
     <p><%= g.completed %></p>
     <br />

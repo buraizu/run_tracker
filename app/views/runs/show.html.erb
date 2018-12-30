@@ -9,3 +9,5 @@
 <p>Review: <%= @run.review %></p>
 <p>Rating: <%= @run.rating %></p>
 <p>Difficulty: <%= @run.difficulty %></p>
+
+<%= link_to "Home", runner_path(@run.runner_id) %>

@@ -10,6 +10,10 @@ class RunsController < ApplicationController
 
   def create
     run = Run.new(run_params)
+    run.runner_id = current_runner.id
+    goal = Goal.find_by(id: params[:run][:goal_id])
+    current_runner.goals << goal
+
     if run.valid?
       run.save
       redirect_to "/runs/#{run.id}"

@@ -1,7 +1,9 @@
 
 
 
-
+<%= link_to "Log Out", "/logout", method: :post %>
+<br />
+<%= link_to "See attractions", "/attractions", method: :get %>
 
 
 You must include and make use of a nested resource with the appropriate RESTful URLs.
