@@ -7,7 +7,7 @@ class Goal < ActiveRecord::Base
   end
 
   def self.accomplished
-    scope :complete4d, -> { where(completed: true) }
+    scope :completed, -> { where(completed: true) }
   end
 
 end

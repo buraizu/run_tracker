@@ -12,9 +12,17 @@
 <%= current_goal %>
 <p>Want to change it? <%= link_to "here", new_goal_path %></p>
 
-<%= form_for current_goal do |f| %>
-  <%= f.collection_select(:id, Goal.all, :id, :description, include_blank: "Select a goal") %>
-  <%= f.submit %>
+<%= form_for @runner do |f| %>
+  Goals:
+  <ul>
+    <%= f.fields_for :goals do |goals_form| %>
+      <li>
+        <%= goals_form.label :description %>
+        <%= goals_form.text_field :description %>
+        <%= goals_form.submit %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <br />

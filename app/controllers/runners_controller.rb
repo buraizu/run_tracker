@@ -23,8 +23,12 @@ class RunnersController < ApplicationController
     @runner = Runner.find_by(id: params[:id])
   end
 
-  def update
+  def edit
+    raise params.inspect
+  end
 
+  def update
+    raise params.inspect
   end
 
   private

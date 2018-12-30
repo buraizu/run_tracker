@@ -1,3 +1,12 @@
+
+<%= form_for current_goal do |f| %>
+  <%= f.collection_select(:id, Goal.all, :id, :description, include_blank: "Select a goal") %>
+  <%= f.submit %>
+<% end %>
+
+
+
+
 Rails Project Checklist of Requirements
 
 A summary of the application
@@ -14,6 +23,12 @@ How will you implement a user submittable attribute on the join table of the man
 <!-- Users will be able to submit the details of their run (distance, rating, etc.) through the New Run form. -->
 
 What it is an ActiveRecord scope method and what is your implementation plan?
+
+<!-- A scope method represents a database query that can be used as a method.
+A couple ideas for scope methods in my app are:
+Run.long_distance finds runs over a particular distance
+Goal.accomplished finds all of the completed goals -->
+
 
 What validations will you have for your models?
 
@@ -32,7 +47,14 @@ What 3rd party login service will you use?
 
 With the way your models are setup what nested routes will you use to meet the requirement?
 
+• You must include a nested new route with form that relates to the parent resource
 
+<!-- The "new run" form is nested within the Runners show page. Logging a run will automatically
+assign the runner_id. -->
+
+• You must include a nested index or show route
+
+<!-- The Runners show page features an index view of all the runner's goals. -->
 
 <%= link_to "Log Out", "/logout", method: :post %>
 <br />
