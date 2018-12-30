@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def current_goal
     if current_runner.goals.present?
-      current_runner.goals.last.description
+      current_runner.runs.last.goal.description
     else
       "Create a new goal"
     end

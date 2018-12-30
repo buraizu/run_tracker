@@ -1,3 +1,36 @@
+Rails Project Checklist of Requirements
+
+A summary of the application
+
+<!-- Run_Tracker will let runners keep track of their runs and running goals.  Users can document their runs,
+assign them to their goals, and mark them off as completed. -->
+
+What will your models and associations be and why? You will need a has_many and belongs_to relationship as well as a many to many relationship.
+
+<!-- There are models for Runners, Runs, and Goals.  A Runner has many runs and a run belongs to a runner.  A runner has many goals, through runs.  A goal has many runners, through runs. -->
+
+How will you implement a user submittable attribute on the join table of the many to many relationship?
+
+<!-- Users will be able to submit the details of their run (distance, rating, etc.) through the New Run form. -->
+
+What it is an ActiveRecord scope method and what is your implementation plan?
+
+What validations will you have for your models?
+
+<!-- Runners will have validations for presence of name, uniqueness of username, and password.
+Runs will have validations that all fields were entered with appropriate datatypes.
+Goals will have validations that all fields have been entered with appropriate datatypes. -->
+
+How will you implement an authentication system?
+
+<!-- Password authentication will be handled with has_secure_password.  Helper methods will ensure
+that protected resources are only shown to the correct users. -->
+
+What 3rd party login service will you use?
+
+<!-- I plan to use Github. -->
+
+With the way your models are setup what nested routes will you use to meet the requirement?
 
 
 
