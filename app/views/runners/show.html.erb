@@ -3,11 +3,7 @@
 <p><%= @runner.first_name %> <%= @runner.last_name %></p>
 
 <h3>Your Current Goal</h3>
-  <% @runner.goals.first do |g| %>
-    <h4><%= g.description %></h4>
-    <p><%= g.completed %></p>
-    <br />
-  <% end %>
+<%= current_goal %>
 
 <h3>Log your run</h3>
 
@@ -15,15 +11,20 @@
   <%= f.hidden_field :runner_id %>
   <%= f.label "Course" %>
   <%= f.text_field :course %>
+  <br />
   <%= f.label "Review" %>
   <%= f.text_area :review %>
+  <br />
   <%= f.label "Distance" %>
   <%= f.text_field :distance %>
+  <br />
   <%= f.label "Rating" %>
   <%= f.text_field :rating %>
+  <br />
   <%= f.label "Difficulty" %>
   <%= f.text_field :difficulty %>
-  <%= f.collection_select(:goal_id, Goal.all, :id, :description) %>
+  <h4></h4>
+  <%= f.collection_select(:goal_id, @runner.goals, :id, :description) %>
 
   <%= f.submit %>
 <% end %>
