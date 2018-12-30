@@ -2,8 +2,20 @@
 
 <p><%= @runner.first_name %> <%= @runner.last_name %></p>
 
+<% if @runner.goals.present? %>
+  <h3>Some past goals, or, who knows, maybe you're still working on them.</h3>
+  <% @runner.goals.each do |g| %>
+    <p><%= g.description %></p>
+  <% end %>
+<% end %>
 <h3>Your Current Goal</h3>
 <%= current_goal %>
+<p>Want to change it? <%= link_to "here", new_goal_path %></p>
+
+<%= form_for current_goal do |f| %>
+  <%= f.collection_select(:id, Goal.all, :id, :description, include_blank: "Select a goal") %>
+  <%= f.submit %>
+<% end %>
 
 <br />
 

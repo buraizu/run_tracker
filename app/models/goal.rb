@@ -6,6 +6,10 @@ class Goal < ActiveRecord::Base
     raise params.inspect
   end
 
+  def self.accomplished
+    scope :complete4d, -> { where(completed: true) }
+  end
+
 end
 
 
