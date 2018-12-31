@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 1) do
     t.integer "goal_id"
     t.string "course"
     t.float "distance"
+    t.integer "time"
     t.text "review"
     t.integer "rating"
     t.string "difficulty"

@@ -1,3 +1,76 @@
+Runner SHOW page
+
+<h2><%= @runner.username %></h2>
+
+<p><%= @runner.first_name %> <%= @runner.last_name %></p>
+
+<% if @runner.goals.present? %>
+  <h3>Some past goals, or, who knows, maybe you're still working on them.</h3>
+  <% @runner.goals.each do |g| %>
+    <p><%= g.description %></p>
+  <% end %>
+<% end %>
+<h3>Your Current Goal</h3>
+<%= current_goal %>
+<p>Want to change it? <%= link_to "here", new_goal_path %></p>
+
+<%= form_for @runner do |f| %>
+  Goals:
+  <ul>
+    <%= f.fields_for :goals do |goals_form| %>
+      <li>
+        <%= goals_form.label :description %>
+        <%= goals_form.text_field :description %>
+        <%= goals_form.submit %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br />
+
+<h3>Log your run</h3>
+
+<%= form_for @runner.runs.build do |f| %>
+  <%= f.hidden_field :runner_id %>
+  <%= f.label "Course" %>
+  <%= f.text_field :course %>
+  <br />
+  <%= f.label "Review" %>
+  <%= f.text_area :review %>
+  <br />
+  <%= f.label "Distance" %>
+  <%= f.text_field :distance %>
+  <br />
+  <%= f.label "Rating" %>
+  <%= f.text_field :rating %>
+  <br />
+  <%= f.label "Difficulty" %>
+  <%= f.text_field :difficulty %>
+  <h4></h4>
+  <%= f.collection_select(:goal_id, Goal.all, :id, :description) %>
+
+  <%= f.submit %>
+<% end %>
+
+<br />
+
+<ul>
+  <% @runner.runs.each do |r| %>
+    <li><%= r.course %></li>
+    <% if r.goal.present? %>
+      <li><%= r.goal.description %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<p><%= link_to "Log Out", "/logout", method: :post %></p>
+
+
+
+
+
 
 <%= form_for current_goal do |f| %>
   <%= f.collection_select(:id, Goal.all, :id, :description, include_blank: "Select a goal") %>

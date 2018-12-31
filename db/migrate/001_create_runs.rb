@@ -18,6 +18,7 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.belongs_to :goal, index: true
       t.string :course
       t.float :distance
+      t.integer :time
       t.text :review
       t.integer :rating
       t.string :difficulty
