@@ -11,8 +11,7 @@ class RunsController < ApplicationController
   def create
     run = Run.new(run_params)
     run.runner_id = current_runner.id
-    goal = Goal.find_by(id: params[:run][:goal_id])
-    current_runner.goals << goal
+  
 
     if run.valid?
       run.save
@@ -27,7 +26,7 @@ class RunsController < ApplicationController
   private
 
     def run_params
-      params.require(:run).permit(:distance, :course, :review, :rating, :difficulty, :runner_id, :goal_id)
+      params.require(:run).permit(:distance, :time, :course, :review, :rating, :difficulty, :runner_id, :goal_id)
     end
 
 end

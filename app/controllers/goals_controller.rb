@@ -34,7 +34,3 @@ class GoalsController < ApplicationController
     end
 
 end
-
-# "goal"=>{"id"=>"1", "description"=>"run a 50k"}  With new goal entered
-
-# "goal"=>{"id"=>"1", "description"=>"run a 2k"} With both options selected.
