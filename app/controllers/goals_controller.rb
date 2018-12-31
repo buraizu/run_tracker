@@ -20,8 +20,7 @@ class GoalsController < ApplicationController
     goal = Goal.new(goal_params)
     if goal.valid?
       goal.save
-      current_runner.goals << goal
-      redirect_to "/runners/#{current_runner.id}"
+      redirect_to runner_path(current_runner)
     else
       redirect_to "/goals/new"
     end

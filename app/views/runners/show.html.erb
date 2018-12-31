@@ -1,7 +1,7 @@
 <h1>Runner Show Page</h1>
 
 <h2>Welcome, <%= @runner.username %>!</h2>
-This is your current goal: <%= current_goal.description %>
+Current goal: <%= current_goal %>
 <h3></h3>
 
 <h4>Just back from a run? Log the details <%= link_to "here!", new_runner_run_path(@runner) %></h4>

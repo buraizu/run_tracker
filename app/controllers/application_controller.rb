@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_goal
-    if current_runner.goals.present?
+    if current_runner.runs.present?
       current_runner.runs.last.goal
     else
-      "Create a new goal"
+      "Set your goal when you log a run!"
     end
   end
 

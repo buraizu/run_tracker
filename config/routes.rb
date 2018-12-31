@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :runners do
     resources :runs
   end
-  
+
   resources :runs
   resources :goals
 
