@@ -1,7 +1,11 @@
 class RunsController < ApplicationController
 
   def index
-    @runs = Run.all
+    if params[:runner_id].present? && Runner.find_by(id: params[:runner_id])
+      @runs = Runner.find_by(id: params[:runner_id]).runs
+    else
+      @runs = Run.all
+    end
   end
 
   def new
@@ -18,7 +22,7 @@ class RunsController < ApplicationController
     if run.save
       redirect_to run_path(run.id)
     else
-      redirect_to new_run_path
+
     end
   end
 
