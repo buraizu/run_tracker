@@ -3,7 +3,7 @@
 <%= @run.runner_id %>
 
 <%= form_for @run do |f| %>
-
+  <%= f.hidden_field :runner_id %>
   <%= f.label :course %>
   <%= f.text_field :course %>
   <br />
