@@ -13,7 +13,7 @@ class RunnersController < ApplicationController
     if runner.valid?
       runner.save
       session[:runner_id] = runner[:id]
-      redirect_to "/goals/new"
+      redirect_to "/runners/#{runner.id}"
     else
       redirect_to "/"
     end
