@@ -1,3 +1,37 @@
+
+<%= form_for @run do |f| %>
+
+  <%= f.label :course %>
+  <%= f.text_field :course %>
+  <br />
+  <%= f.label :distance %>
+  <%= f.text_field :distance %>
+  <br />
+  <%= f.label :time %>
+  <%= f.text_field :time %>
+  <br />
+  <%= f.label :review %>
+  <%= f.text_area :review %>
+  <br />
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <br />
+  <%= f.label :difficulty %>
+  <%= f.text_field :difficulty %>
+  <br />
+  <%= f.submit %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
 Prefix Verb   URI Pattern                                                                              Controller#Action
                    root GET    /                                                                                        runners#new
             runner_runs GET    /runners/:runner_id/runs(.:format)                                                       runs#index
@@ -16,7 +50,7 @@ Prefix Verb   URI Pattern                                                       
                         PATCH  /runners/:id(.:format)                                                                   runners#update
                         PUT    /runners/:id(.:format)                                                                   runners#update
                         DELETE /runners/:id(.:format)                                                                   runners#destroy
-            
+
                  signin GET    /signin(.:format)                                                                        sessions#new
                         POST   /signin(.:format)                                                                        sessions#create
                  logout POST   /logout(.:format)                                                                        sessions#destroy

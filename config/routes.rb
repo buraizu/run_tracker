@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   resources :runners do
     resources :runs
   end
-
+  
+  resources :runs
   resources :goals
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 end
-
-# resources :runs

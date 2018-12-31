@@ -5,18 +5,15 @@ class RunsController < ApplicationController
   end
 
   def new
-    raise params.inspect
+
+
+      @run = Run.new(runner_id: params[:runner_id])
+
   end
 
   def create
-    run = Run.new(run_params)
-    run.runner_id = current_runner.id
-  
 
-    if run.valid?
-      run.save
-      redirect_to "/runs/#{run.id}"
-    end
+
   end
 
   def show
@@ -31,12 +28,4 @@ class RunsController < ApplicationController
 
 end
 
-
-# "run"=>
-# {"runner_id"=>"1",
-#   "course"=>"Shoreview",
-#   "review"=>"Hilly trails",
-#   "distance"=>"12",
-#   "rating"=>"7",
-#    "difficulty"=>"8",
-#    "goal_id"=>"1"}
+# {"controller"=>"runs", "action"=>"new", "runner_id"=>"5"}

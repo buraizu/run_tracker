@@ -1,1 +1,26 @@
 <h1>New Run Page</h1>
+
+<%= @run.runner_id %>
+
+<%= form_for @run do |f| %>
+
+  <%= f.label :course %>
+  <%= f.text_field :course %>
+  <br />
+  <%= f.label :distance %>
+  <%= f.text_field :distance %>
+  <br />
+  <%= f.label :time %>
+  <%= f.text_field :time %>
+  <br />
+  <%= f.label :review %>
+  <%= f.text_area :review %>
+  <br />
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <br />
+  <%= f.label :difficulty %>
+  <%= f.text_field :difficulty %>
+  <br />
+  <%= f.submit %>
+<% end %>
