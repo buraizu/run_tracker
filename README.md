@@ -27,8 +27,7 @@ What it is an ActiveRecord scope method and what is your implementation plan?
 <!-- A scope method represents a database query that can be used as a method.
 A couple ideas for scope methods in my app are:
 Run.long_distance finds runs over a particular distance
-Goal.accomplished finds all of the completed goals -->
-
+Goal.accomplished finds all of the completed goals --> Must accept user_id in order to list user
 
 What validations will you have for your models?
 
