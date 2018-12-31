@@ -22,5 +22,12 @@
   <%= f.label :difficulty %>
   <%= f.text_field :difficulty %>
   <br />
+
+
+  <%= f.collection_select(:goal_id, Goal.all, :id, :description, include_blank: "Select a goal") %>
+
+
+
+
   <%= f.submit %>
 <% end %>

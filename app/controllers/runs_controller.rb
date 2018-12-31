@@ -18,7 +18,6 @@ class RunsController < ApplicationController
 
   def create
     run = Run.new(run_params)
-    run.goal_id = current_goal.id
     if run.save
       redirect_to run_path(run.id)
     else
