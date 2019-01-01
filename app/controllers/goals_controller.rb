@@ -1,7 +1,11 @@
 class GoalsController < ApplicationController
 
   def index
-    @goals = Goal.all
+    if params[:runner_id]
+      @goals = Runner.find_by(id: params[:runner_id]).goals
+    else
+      @goals = Goal.all
+    end
   end
 
   def new
