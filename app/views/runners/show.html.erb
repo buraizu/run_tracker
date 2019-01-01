@@ -2,7 +2,7 @@
 
 <h2>Welcome, <%= @runner.username %>!</h2>
 Current goal: <%= current_goal.description %>
-<h3></h3>
+<h3>Completed your goal? Mark it off <%= link_to "here", edit_goal_path(current_goal) %></h3>
 
 <h4>Just back from a run? Log the details <%= link_to "here!", new_runner_run_path(@runner) %></h4>
 

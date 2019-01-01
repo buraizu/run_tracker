@@ -26,6 +26,20 @@ class GoalsController < ApplicationController
     end
   end
 
+  def edit
+    if params[:runner_id]
+      runner = Runner.find_by(id: params[:runner_id])
+      if runner.nil?
+        redirect_to runners_path, alert: "Runner not found."
+      else
+        @run = runner.runs.find_by(id: params[:id])
+        redirect_to runner_runs_path(runner), alert: "Run not found." if @run.nil?
+      end
+    else
+      @run = Run.find(params[:id])
+    end
+  end
+
   private
 
     def goal_params
