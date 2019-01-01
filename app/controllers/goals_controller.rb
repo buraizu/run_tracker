@@ -1,6 +1,7 @@
 class GoalsController < ApplicationController
 
   def index
+
     if params[:runner_id]
       @goals = Runner.find_by(id: params[:runner_id]).goals
     else
@@ -21,7 +22,11 @@ class GoalsController < ApplicationController
   end
 
   def create
+
     goal = Goal.new(goal_params)
+    @run = goal.runs.build
+    @run.goal_id = goal.id
+    render "runners/#{current_runner.id}"
     if goal.valid?
       goal.save
       redirect_to runner_path(current_runner)
@@ -47,7 +52,7 @@ class GoalsController < ApplicationController
   private
 
     def goal_params
-      params.require(:goal).permit(:description, :completed)
+      params.require(:goal).permit(:description, :completed, :runner_id)
     end
 
 end
