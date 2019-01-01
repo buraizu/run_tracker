@@ -6,4 +6,20 @@ Current goal: <%= current_goal %>
 
 <h4>Just back from a run? Log the details <%= link_to "here!", new_runner_run_path(@runner) %></h4>
 
-<h5>Wow, you've gone for <%= @runner.runs.count %> runs! Check them out <%= link_to "here", runner_runs_path(@runner.id) %></h5>
+<h4>
+  Wow, you've gone for <%= @runner.runs.count %> runs!
+  Check them out <%= link_to "here", runner_runs_path(@runner.id) %>
+</h4>
+
+<h4>
+  <%= @runner.username %>, you have
+  <%= @runner.goals.count %> goals.
+  Check them out!
+  <br />
+  <% @runner.goals.each do |g| %>
+    <br />
+    <%= g.description %>
+    <br />
+    <%= g.completed %>
+  <% end %>
+</h4>
