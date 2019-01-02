@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     if current_runner.runs.present?
       current_runner.runs.last.goal
     else
-      "Set your goal when you log a run!"
+
     end
   end
 
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     if current_runner.runs.present?
       current_runner.runs.last.goal.description
     else
-      "Set your goal when you log a run!"
+      "Set your goal when you log your first run!"
     end
   end
 

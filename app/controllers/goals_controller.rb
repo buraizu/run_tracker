@@ -24,9 +24,7 @@ class GoalsController < ApplicationController
   def create
 
     goal = Goal.new(goal_params)
-    @run = goal.runs.build
-    @run.goal_id = goal.id
-    render "runners/#{current_runner.id}"
+
     if goal.valid?
       goal.save
       redirect_to runner_path(current_runner)
