@@ -5,8 +5,15 @@
     <p>Check out this run!</p>
   <% end %>
   <p><%= run.course %></p>
-  <p><%= Runner.find_by(id: run.runner_id).username %></p>
-  <p><%= Goal.find_by(id: run.goal_id).description %></p>
+  <p>Runner: <%= Runner.find_by(id: run.runner_id).username %></p>
+
+  <p>Distance: <%= run.distance %></p>
+  <p>Time: <%= run.time %></p>
+  <p>Rating: <%= run.rating %></p>
+  <p>Review: <%= run.review %></p>
+  <p>Difficulty: <%= run.difficulty %></p>
+
+  <p>This run's goal: <%= Goal.find_by(id: run.goal_id).description %>. Mark it completed <%= link_to "here", edit_goal_path(run.goal_id) %></p>
   <p></p>
 
 <% end %>
