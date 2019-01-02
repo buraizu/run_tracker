@@ -3,7 +3,7 @@
 <h3><%= Runner.find_by(id: @run.runner_id).username %></h3>
 
 <h3>Goal: <%= Goal.find_by(id: @run.goal_id).description %></h3>
-<h3>Completed: <%= Goal.find_by(id: @run.goal_id).completed %></h3>
+<h3>Completed: <%= goal_completed(Goal.find_by(id: @run.goal_id)) %></h3>
 
 <p>Course: <%= @run.course %></p>
 <p>Review: <%= @run.review %></p>

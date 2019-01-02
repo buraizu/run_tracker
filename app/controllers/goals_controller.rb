@@ -34,23 +34,25 @@ class GoalsController < ApplicationController
   end
 
   def edit
-    if params[:runner_id]
-      runner = Runner.find_by(id: params[:runner_id])
-      if runner.nil?
-        redirect_to runners_path, alert: "Runner not found."
-      else
-        @run = runner.runs.find_by(id: params[:id])
-        redirect_to runner_runs_path(runner), alert: "Run not found." if @run.nil?
-      end
+
+    @goal = Goal.find_by(id: params[:id])
+  end
+
+  def update
+  
+    @goal = Gaol.find_by(id: params[:id])
+    @goal.update(goal_params)
+    if @goal.save
+      redirect_to @goal
     else
-      @run = Run.find(params[:id])
+      render :edit
     end
   end
 
   private
 
     def goal_params
-      params.require(:goal).permit(:description, :completed, :runner_id)
+      params.require(:goal).permit(:description, :completed)
     end
 
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_runner
   helper_method :current_goal
   helper_method :current_goal_description
+  helper_method :goal_completed
 
   def is_logged_in
     session[:runner_id].present?
@@ -25,6 +26,14 @@ class ApplicationController < ActionController::Base
       current_runner.runs.last.goal.description
     else
       "Set your goal when you log your first run!"
+    end
+  end
+
+  def goal_completed(goal)
+    if goal.completed == 0
+      false
+    else
+      true
     end
   end
 
