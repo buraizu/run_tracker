@@ -1,4 +1,13 @@
 
+create_table :run_goals do |t|
+  t.belongs_to :run, index: true
+  t.belongs_to :goal, index: true
+  t.text_field :contribution_notes
+end
+
+Because there is one universal goal, I am unable to assign it to an individual runner.
+
+
 
 <%= form_for current_goal do |f| %>
   <%= f.collection_select(:id, Goal.all, :id, :description, include_blank: "Select a goal") %>

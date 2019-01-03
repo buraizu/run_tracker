@@ -17,6 +17,14 @@ ActiveRecord::Schema.define(version: 1) do
     t.boolean "completed"
   end
 
+  create_table "run_goals", force: :cascade do |t|
+    t.integer "run_id"
+    t.integer "goal_id"
+    t.string "contribution_notes"
+    t.index ["goal_id"], name: "index_run_goals_on_goal_id"
+    t.index ["run_id"], name: "index_run_goals_on_run_id"
+  end
+
   create_table "runners", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -26,14 +34,11 @@ ActiveRecord::Schema.define(version: 1) do
 
   create_table "runs", force: :cascade do |t|
     t.integer "runner_id"
-    t.integer "goal_id"
     t.string "course"
     t.float "distance"
-    t.integer "time"
+    t.float "time"
     t.text "review"
     t.integer "rating"
-    t.string "difficulty"
-    t.index ["goal_id"], name: "index_runs_on_goal_id"
     t.index ["runner_id"], name: "index_runs_on_runner_id"
   end
 

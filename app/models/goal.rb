@@ -1,6 +1,6 @@
 class Goal < ActiveRecord::Base
-  has_many :runs
-  has_many :runners, through: :runs
+  has_many :run_goals
+  has_many :runs, through: :run_goals
 
   def new
     raise params.inspect

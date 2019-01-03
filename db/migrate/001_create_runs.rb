@@ -15,14 +15,20 @@ class CreateRuns < ActiveRecord::Migration[5.0]
 
     create_table :runs do |t|
       t.belongs_to :runner, index: true
-      t.belongs_to :goal, index: true
       t.string :course
       t.float :distance
-      t.integer :time
+      t.float :time
       t.text :review
       t.integer :rating
-      t.string :difficulty
     end
+
+    create_table :run_goals do |t|
+      t.belongs_to :run, index: true
+      t.belongs_to :goal, index: true
+      t.string :contribution_notes
+    end
+
+
 
   end
 end
