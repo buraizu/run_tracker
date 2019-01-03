@@ -10,7 +10,6 @@ class CreateRuns < ActiveRecord::Migration[5.0]
 
     create_table :goals do |t|
       t.string :description
-      t.boolean :completed
     end
 
     create_table :runs do |t|
@@ -22,13 +21,11 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.integer :rating
     end
 
-    create_table :run_goals do |t|
-      t.belongs_to :run, index: true
+    create_table :runner_goals do |t|
+      t.belongs_to :runner, index: true
       t.belongs_to :goal, index: true
-      t.string :contribution_notes
+      t.boolean :completed
     end
-
-
 
   end
 end

@@ -14,15 +14,14 @@ ActiveRecord::Schema.define(version: 1) do
 
   create_table "goals", force: :cascade do |t|
     t.string "description"
-    t.boolean "completed"
   end
 
-  create_table "run_goals", force: :cascade do |t|
-    t.integer "run_id"
+  create_table "runner_goals", force: :cascade do |t|
+    t.integer "runner_id"
     t.integer "goal_id"
-    t.string "contribution_notes"
-    t.index ["goal_id"], name: "index_run_goals_on_goal_id"
-    t.index ["run_id"], name: "index_run_goals_on_run_id"
+    t.boolean "completed"
+    t.index ["goal_id"], name: "index_runner_goals_on_goal_id"
+    t.index ["runner_id"], name: "index_runner_goals_on_runner_id"
   end
 
   create_table "runners", force: :cascade do |t|
