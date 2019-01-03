@@ -30,7 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def event_completed(runner_event)
-    if runner_event.completed == 0
+    
+    if runner_event.completed == 0 || runner_event.completed == nil
       "You haven't completed #{Event.find_by(id: runner_event.event_id).description} yet!"
     else
       "Congratulations, you've completed #{Event.find_by(id: runner_event.event_id).description}!"

@@ -4,6 +4,10 @@ class RunnerEventsController < ApplicationController
     @runner_event = RunnerEvent.new
   end
 
+  def show
+    @runner_event = RunnerEvent.find_by(id: params[:id])
+  end
+
   def create
     runner_event = RunnerEvent.new(runner_event_params)
     runner_event.runner_id = current_runner.id
@@ -14,6 +18,16 @@ class RunnerEventsController < ApplicationController
     end
   end
 
+  def update
+    @runner_event = RunnerEvent.find_by(id: params[:id])
+    @runner_event.update(runner_event_params)
+    if @runner_event.save
+      redirect_to runner_event_path(@runner_event.id)
+    else
+      redirect_to runner_path(current_runner.id)
+    end
+  end
+
   private
 
     def runner_event_params
@@ -21,3 +35,17 @@ class RunnerEventsController < ApplicationController
     end
 
 end
+
+# "runner_event"=>{"completed"=>"1"},
+
+# def update
+#     @song = Song.find(params[:id])
+#
+#     @song.update(song_params)
+#
+#     if @song.save
+#       redirect_to @song
+#     else
+#       render :edit
+#     end
+#   end
