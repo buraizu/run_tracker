@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_event
   helper_method :current_event_description
   helper_method :event_completed
+  helper_method :completed_by
 
   def is_logged_in
     session[:runner_id].present?
@@ -30,12 +31,24 @@ class ApplicationController < ActionController::Base
   end
 
   def event_completed(runner_event)
-    
+
     if runner_event.completed == 0 || runner_event.completed == nil
       "You haven't completed #{Event.find_by(id: runner_event.event_id).description} yet!"
     else
       "Congratulations, you've completed #{Event.find_by(id: runner_event.event_id).description}!"
     end
+  end
+
+  def completed_by(event)
+    runners = []
+    event.runners.each do |r|
+      r.runner_events.each do |r_e|
+        if r_e.completed != nil && r_e.event_id == event.id
+          runners << r
+        end
+      end
+    end
+    runners
   end
 
 end

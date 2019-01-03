@@ -1,2 +1,6 @@
 <h2>Event:</h2>
 <p><%= @event.description %></p>
+
+<% completed_by(@event).each do |runner| %>
+  <h3>Completed by: <%= runner.username %></h3>
+<% end %>
