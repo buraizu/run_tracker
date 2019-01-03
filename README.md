@@ -1,3 +1,24 @@
+<h3>First, set an event</h3>
+
+<%= form_for @event do |f| %>
+  <%= f.label "Check if your event exists here" %>
+  <br />
+  <%= f.collection_select(:id, Event.all, :id, :description, include_blank: "Select an event") %>
+  <br />
+  <%= f.label "Or, create a new event" %>
+  <%= f.text_field :description %>
+  <br />
+  <%= f.submit %>
+
+<% end %>
+
+
+
+
+<%= f.collection_select(:id, Event.all, :id, :description, include_blank: "Select an event") %>
+<br />
+
+
 
 <%= link_to "Set your goal here", new_runner_goal_path %>
 

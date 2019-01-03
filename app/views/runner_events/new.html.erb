@@ -6,7 +6,7 @@
   <br />
   <%= f.collection_select(:event_id, Event.all, :id, :description, include_blank: "Select an event") %>
   <br />
-  <%= f.submit %>
+  <%= f.submit "I can do it!" %>
 <% end %>
 
 <h3>Don't see the event you're training for?  Add it <%= link_to "here", new_event_path %></h3>

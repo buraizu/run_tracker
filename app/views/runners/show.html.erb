@@ -16,7 +16,7 @@
 <h4>
   <%= @runner.username %>, you have
   <%= @runner.runner_events.count %> events.
-  Check them out!
+  Check them out <%= link_to "here", runner_events_path %>
   <br />
   <% @runner.runner_events.each do |r_e| %>
     <br />
