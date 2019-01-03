@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   helper_method :is_logged_in
   helper_method :current_runner
-  helper_method :current_goal
-  helper_method :current_goal_description
-  helper_method :goal_completed
+  helper_method :current_event
+  helper_method :current_event_description
+  helper_method :event_completed
 
   def is_logged_in
     session[:runner_id].present?
@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_event_description
-    if current_runner.runner_goals.present?
-      current_runner.runner_goals.last.event.description
+    if current_runner.runner_events.present?
+      current_runner.runner_events.last.event.description
     else
-      "Follow the link below to find or create a goal"
+      "Follow the link below to set your next event"
     end
   end
 

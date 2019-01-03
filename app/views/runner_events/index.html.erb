@@ -1,0 +1,9 @@
+<h1><%= current_runner.username %>'s Events Index</h1>
+
+<ul>
+  <% current_runner.runner_events.each do |r_e| %>
+    <li><%= Event.find_by(id: r_e.event_id).description %></li>
+    <br />
+    <%= r_e.completed %>
+  <% end %>
+</ul>

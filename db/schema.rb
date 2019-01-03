@@ -10,6 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 1) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "description"
+  end
+
+  create_table "runner_events", force: :cascade do |t|
+    t.integer "runner_id"
+    t.integer "event_id"
+    t.boolean "completed"
+    t.index ["event_id"], name: "index_runner_events_on_event_id"
+    t.index ["runner_id"], name: "index_runner_events_on_runner_id"
+  end
+
+  create_table "runners", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.string "password_digest"
+  end
+
+  create_table "runs", force: :cascade do |t|
+    t.integer "runner_id"
+    t.string "course"
+    t.float "distance"
+    t.float "time"
+    t.text "review"
+    t.integer "rating"
+    t.index ["runner_id"], name: "index_runs_on_runner_id"
+  end
 
 end
