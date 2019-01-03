@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
 
   resources :runs
-  resources :goals
-  resources :runner_goals
+  resources :events
+  resources :runner_events
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'

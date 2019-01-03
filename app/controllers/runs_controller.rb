@@ -28,13 +28,13 @@ class RunsController < ApplicationController
 
   def show
     @run = Run.find_by(id: params[:id])
-    
+
   end
 
   private
 
     def run_params
-      params.require(:run).permit(:distance, :time, :course, :review, :rating, :difficulty, :runner_id, :goal_id)
+      params.require(:run).permit(:distance, :time, :course, :review, :rating, :runner_id)
     end
 
 end

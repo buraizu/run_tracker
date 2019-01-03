@@ -8,7 +8,7 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.string :password_digest
     end
 
-    create_table :goals do |t|
+    create_table :events do |t|
       t.string :description
     end
 
@@ -21,9 +21,9 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.integer :rating
     end
 
-    create_table :runner_goals do |t|
+    create_table :runner_events do |t|
       t.belongs_to :runner, index: true
-      t.belongs_to :goal, index: true
+      t.belongs_to :event, index: true
       t.boolean :completed
     end
 

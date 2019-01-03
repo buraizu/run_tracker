@@ -1,8 +1,11 @@
 <h1>Runner Show Page</h1>
 
 <h2>Welcome, <%= @runner.username %>!</h2>
-Current goal: <%= current_goal_description %>
-<%= link_to "Set your goal here", new_runner_goal_path %>
+
+<%= current_event_description %>
+<br />
+<%= link_to "Choose an event to train for", new_runner_event_path %>
+
 <h4>Just back from a run? Log the details <%= link_to "here!", new_runner_run_path(@runner) %></h4>
 
 <h4>
@@ -12,12 +15,12 @@ Current goal: <%= current_goal_description %>
 
 <h4>
   <%= @runner.username %>, you have
-  <%= @runner.goals.count %> goals.
+  <%= @runner.runner_events.count %> goals.
   Check them out!
   <br />
-  <% @runner.runner_goals.each do |r_g| %>
+  <% @runner.runner_events.each do |r_e| %>
     <br />
-    <%= r_g.completed %>
+    <%= r_e.completed %>
   <% end %>
 </h4>
 

@@ -1,5 +1,5 @@
 
-
+<%= link_to "Set your goal here", new_runner_goal_path %>
 
   <%= f.collection_select(:goal_id, Goal.all, :id, :description, include_blank: "Select a goal") %>
 

@@ -13,27 +13,27 @@ class ApplicationController < ActionController::Base
     Runner.find_by(id: session[:runner_id])
   end
 
-  def current_goal
-    if current_runner.runner_goals.present?
-      current_runner.runner_goals.last.goal
+  def current_event
+    if current_runner.runner_events.present?
+      current_runner.runner_events.last.event
     else
 
     end
   end
 
-  def current_goal_description
+  def current_event_description
     if current_runner.runner_goals.present?
-      current_runner.runner_goals.last.goal.description
+      current_runner.runner_goals.last.event.description
     else
-      "Set your goal when you log your first run!"
+      "Follow the link below to find or create a goal"
     end
   end
 
-  def goal_completed(runner_goal)
+  def event_completed(runner_goal)
     if runner_goal.completed == 0
-      "You haven't completed #{Goal.find_by(id: runner_goal.goal_id).description} yet!"
+      "You haven't completed #{Event.find_by(id: runner_goal.event_id).description} yet!"
     else
-      "Congratulations, you've completed #{Goal.find_by(id: runner_goal.goal_id).description}!"
+      "Congratulations, you've completed #{Event.find_by(id: runner_goal.event_id).description}!"
     end
   end
 
