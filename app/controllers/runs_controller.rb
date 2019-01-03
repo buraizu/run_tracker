@@ -28,6 +28,7 @@ class RunsController < ApplicationController
 
   def show
     @run = Run.find_by(id: params[:id])
+    
   end
 
   private

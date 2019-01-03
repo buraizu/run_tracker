@@ -1,0 +1,10 @@
+<h1>Set your goal here!</h1>
+
+
+<%= form_for @runner_goal do |f| %>
+  <%= f.label "Goal selection" %>
+  <br />
+  <%= f.collection_select(:goal_id, Goal.all, :id, :description, include_blank: "Select a goal") %>
+  <br />
+  <%= f.submit %>
+<% end %>

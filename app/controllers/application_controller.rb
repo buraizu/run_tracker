@@ -14,26 +14,26 @@ class ApplicationController < ActionController::Base
   end
 
   def current_goal
-    if current_runner.runs.present?
-      current_runner.runs.last.goal
+    if current_runner.runner_goals.present?
+      current_runner.runner_goals.last.goal
     else
 
     end
   end
 
   def current_goal_description
-    if current_runner.runs.present?
-      current_runner.runs.last.goal.description
+    if current_runner.runner_goals.present?
+      current_runner.runner_goals.last.goal.description
     else
       "Set your goal when you log your first run!"
     end
   end
 
-  def goal_completed(goal)
-    if goal.completed == 0
-      false
+  def goal_completed(runner_goal)
+    if runner_goal.completed == 0
+      "You haven't completed #{Goal.find_by(id: runner_goal.goal_id).description} yet!"
     else
-      true
+      "Congratulations, you've completed #{Goal.find_by(id: runner_goal.goal_id).description}!"
     end
   end
 

@@ -2,7 +2,7 @@
 
 <h2>Welcome, <%= @runner.username %>!</h2>
 Current goal: <%= current_goal_description %>
-<%= link_to "Set your goal here", new_goal_path %>
+<%= link_to "Set your goal here", new_runner_goal_path %>
 <h4>Just back from a run? Log the details <%= link_to "here!", new_runner_run_path(@runner) %></h4>
 
 <h4>
@@ -15,12 +15,10 @@ Current goal: <%= current_goal_description %>
   <%= @runner.goals.count %> goals.
   Check them out!
   <br />
-  <% @runner.goals.each do |g| %>
+  <% @runner.runner_goals.each do |r_g| %>
     <br />
-    <%= g.description %>
-    <br />
-    <%= g.completed %>
+    <%= r_g.completed %>
   <% end %>
 </h4>
 
-<%= 
+<%=

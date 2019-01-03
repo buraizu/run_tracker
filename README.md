@@ -1,6 +1,7 @@
 
 
 
+  <%= f.collection_select(:goal_id, Goal.all, :id, :description, include_blank: "Select a goal") %>
 
 
 

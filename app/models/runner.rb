@@ -5,7 +5,8 @@ class Runner < ActiveRecord::Base
   validates :username, presence: true
 
   has_many :runs
-
+  has_many :runner_goals
+  has_many :goals, through: :runner_goals
 
 end
 

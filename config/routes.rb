@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :runs
   resources :goals
+  resources :runner_goals
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
