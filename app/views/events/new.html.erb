@@ -1,24 +1,24 @@
-<h1>New Goal Page</h1>
+<h1>New Event Page</h1>
 
-<% if !current_goal %>
+<% if !current_event %>
   <h3>First, choose your goal from the menu below:</h3>
   <%= form_for @goal do |f| %>
-    <%= f.collection_select(:id, Goal.all, :id, :description, include_blank: "Select a goal") %>
+    <%= f.collection_select(:id, Event.all, :id, :description, include_blank: "Select an event") %>
     <br />
-    <h3><%= f.label "Or, create a new goal" %></h3>
+    <h3><%= f.label "Or, create a new event" %></h3>
     <%= f.text_field :description %>
     <%= f.submit %>
   <% end %>
 <% end %>
 
-<h3>First, set a goal</h3>
+<h3>First, set an event</h3>
 
-<%= form_for @goal do |f| %>
-  <%= f.label "Check if your goal exists here" %>
+<%= form_for @event do |f| %>
+  <%= f.label "Check if your event exists here" %>
   <br />
-  <%= f.collection_select(:id, Goal.all, :id, :description, include_blank: "Select a goal") %>
+  <%= f.collection_select(:id, Event.all, :id, :description, include_blank: "Select an event") %>
   <br />
-  <%= f.label "Or, create a new goal" %>
+  <%= f.label "Or, create a new event" %>
   <%= f.text_field :description %>
   <br />
   <%= f.submit %>

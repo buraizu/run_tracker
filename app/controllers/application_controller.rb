@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def event_completed(runner_goal)
-    if runner_goal.completed == 0
-      "You haven't completed #{Event.find_by(id: runner_goal.event_id).description} yet!"
+  def event_completed(runner_event)
+    if runner_event.completed == 0
+      "You haven't completed #{Event.find_by(id: runner_event.event_id).description} yet!"
     else
-      "Congratulations, you've completed #{Event.find_by(id: runner_goal.event_id).description}!"
+      "Congratulations, you've completed #{Event.find_by(id: runner_event.event_id).description}!"
     end
   end
 
