@@ -13,10 +13,6 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  def create
-    raise params.inspect
-  end
-
   def show
     @event = Event.find_by(id: params[:id])
   end
@@ -27,7 +23,7 @@ class EventsController < ApplicationController
 
     if event.valid?
       event.save
-      redirect_to runner_path(current_runner)
+      redirect_to runner_path(current_runner.id)
     else
       redirect_to "/events/new"
     end

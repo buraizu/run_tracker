@@ -2,13 +2,25 @@
 
 <ul>
   <% current_runner.runner_events.each do |r_e| %>
-    <h6><%= event_completed(r_e)%></h6>
-    <%= form_for r_e do |f| %>
-      <li><%= Event.find_by(id: r_e.event_id).description %></li>
-      <%= f.label :completed %>
-      <%= f.check_box :completed %>
-      <br />
-      <%= f.submit "Wow that was an awesome event!"%>
+    <% if r_e.completed != nil %>
+      <h2>Congratulations on completing this event!</h2>
+      <p><%= event_completed(r_e)%></p>
+    <% end %>
+  <% end %>
+</ul>
+
+<ul>
+  <% current_runner.runner_events.each do |r_e| %>
+    <% if r_e.completed == nil %>
+      <h2>Events still to complete:</h2>
+      <p><%= event_completed(r_e )%></p>
+      <%= form_for r_e do |f| %>
+        <li><%= Event.find_by(id: r_e.event_id).description %></li>
+        <%= f.label :completed %>
+        <%= f.check_box :completed %>
+        <br />
+        <%= f.submit "Wow that was an awesome event!"%>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
