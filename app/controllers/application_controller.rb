@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
   end
 
   def event_completed(runner_event)
-
     if runner_event.completed == 0 || runner_event.completed == nil
       "You haven't completed #{Event.find_by(id: runner_event.event_id).description} yet!"
     else
@@ -65,11 +64,9 @@ class ApplicationController < ActionController::Base
 
   def valid_update_params(runner_event_params)
     if runner_event_params[:completed] == "1" && !!runner_event_params[:finish_time].match(/\A\d+\z/)
-
-      false
-    else
-    
       true
+    else
+      false
     end
   end
 
