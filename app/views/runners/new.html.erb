@@ -1,3 +1,18 @@
+<% if @runner.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@runner.errors.count, "error") %>
+      prohibited this runner from being saved:
+    </h2>
+
+    <ul>
+    <% @runner.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @runner, controller: 'runners', action: 'create' do |f| %>
 
   <h1>Sign Up</h1>

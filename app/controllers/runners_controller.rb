@@ -9,13 +9,13 @@ class RunnersController < ApplicationController
   end
 
   def create
-    runner = Runner.new(runner_params)
-    if runner.valid?
-      runner.save
-      session[:runner_id] = runner[:id]
-      redirect_to runner_path(runner.id)
+    @runner = Runner.new(runner_params)
+    if @runner.valid?
+      @runner.save
+      session[:runner_id] = @runner[:id]
+      redirect_to runner_path(@runner.id)
     else
-      redirect_to "/"
+      render :new
     end
   end
 
