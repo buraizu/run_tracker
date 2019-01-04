@@ -1,6 +1,4 @@
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+
 
 
 <h3>First, set an event</h3>

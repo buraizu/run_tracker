@@ -1,7 +1,11 @@
-<h1><%= current_runner.username %>'s page for </h1>
-
-<h3><%= Event.find_by(id: @runner_event.event_id).description %></h3>
+<h1><%= current_runner.username %>'s page for <%= @event.description %></h1>
 
 <h3><%= event_completed(@runner_event) %></h3>
+
+<h3>Completed in: <%= completed_time(current_runner, @event) %> minutes</h3>
+
+<%= link_to "Event Details", event_path(@event.id) %>
+
+<br />
 
 <p><%= link_to "Home", runner_path(current_runner.id) %></p>

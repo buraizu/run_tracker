@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_event_description
   helper_method :event_completed
   helper_method :completed_by
+  helper_method :completed_time
 
   def is_logged_in
     session[:runner_id].present?
@@ -49,6 +50,16 @@ class ApplicationController < ActionController::Base
       end
     end
     runners
+  end
+
+  def completed_time(runner, event)
+    race_time = nil
+    runner.runner_events.each do |r_e|
+      if r_e.event_id == event.id && r_e.completed
+        race_time = r_e.finish_time
+      end
+    end
+    race_time
   end
 
 end

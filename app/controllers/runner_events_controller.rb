@@ -6,6 +6,7 @@ class RunnerEventsController < ApplicationController
 
   def show
     @runner_event = RunnerEvent.find_by(id: params[:id])
+    @event = Event.find_by(id: @runner_event.event_id)
   end
 
   def create
@@ -31,7 +32,7 @@ class RunnerEventsController < ApplicationController
   private
 
     def runner_event_params
-      params.require(:runner_event).permit(:runner_id, :event_id, :completed)
+      params.require(:runner_event).permit(:runner_id, :event_id, :completed, :finish_time)
     end
 
 end

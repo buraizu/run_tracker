@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 1) do
     t.integer "runner_id"
     t.integer "event_id"
     t.boolean "completed"
+    t.integer "finish_time"
     t.index ["event_id"], name: "index_runner_events_on_event_id"
     t.index ["runner_id"], name: "index_runner_events_on_runner_id"
   end

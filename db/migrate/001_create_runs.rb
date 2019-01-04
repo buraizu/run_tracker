@@ -25,6 +25,7 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.belongs_to :runner, index: true
       t.belongs_to :event, index: true
       t.boolean :completed
+      t.integer :finish_time
     end
 
   end
