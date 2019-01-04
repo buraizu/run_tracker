@@ -17,17 +17,18 @@ class RunnerEventsController < ApplicationController
     runner_event = RunnerEvent.new(runner_event_params)
     runner_event.runner_id = current_runner.id
     if runner_event.save
+
       redirect_to runner_path(current_runner.id)
     else
-      binding.pry
-      redirect_to new_runner_event_path
+
+      render :new
     end
   end
 
   def update
 
     @runner_event = RunnerEvent.find_by(id: params[:id])
-  
+
     if runner_event_params[:completed] != "1" || runner_event_params[:finish_time] == "" || !runner_event_params[:finish_time].to_i
       redirect_to runner_events_path
     else @runner_event.update(runner_event_params)

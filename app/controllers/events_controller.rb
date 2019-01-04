@@ -21,9 +21,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.valid?
       @event.save
-      redirect_to runner_event_path(current_runner.id)
+      redirect_to new_runner_event_path
     else
-      redirect_to "/events/new"
+      render :new
     end
   end
 
