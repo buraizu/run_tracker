@@ -30,6 +30,7 @@ class RunnerEventsController < ApplicationController
     @runner_event = RunnerEvent.find_by(id: params[:id])
 
     if runner_event_params[:completed] != "1" || runner_event_params[:finish_time] == "" || !runner_event_params[:finish_time].to_i
+      flash[:notice] = "Must check 'completed' and provide time in minutes"
       redirect_to runner_events_path
     else @runner_event.update(runner_event_params)
       if @runner_event.save

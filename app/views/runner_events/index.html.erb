@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h1><%= current_runner.username %>'s Events Index</h1>
 
 <ul>
