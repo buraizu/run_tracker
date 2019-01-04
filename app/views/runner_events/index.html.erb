@@ -20,7 +20,7 @@
     <% if r_e.completed == nil %>
       <h2>Events still to complete:</h2>
       <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
-      <p><%= event_completed(r_e )%></p>
+      <p><%= event_completed(r_e)%></p>
       <%= form_for r_e do |f| %>
         <li><%= Event.find_by(id: r_e.event_id).description %></li>
         <%= f.label :completed %>

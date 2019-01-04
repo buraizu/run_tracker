@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :event_completed
   helper_method :completed_by
   helper_method :completed_time
+  helper_method :valid_update_params
 
   def is_logged_in
     session[:runner_id].present?
@@ -60,6 +61,16 @@ class ApplicationController < ActionController::Base
       end
     end
     race_time
+  end
+
+  def valid_update_params(runner_event_params)
+    if runner_event_params[:completed] == "1" && !!runner_event_params[:finish_time].match(/\A\d+\z/)
+
+      false
+    else
+    
+      true
+    end
   end
 
 end
