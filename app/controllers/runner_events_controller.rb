@@ -27,7 +27,8 @@ class RunnerEventsController < ApplicationController
   def update
 
     @runner_event = RunnerEvent.find_by(id: params[:id])
-    if runner_event_params[:completed] != "1" || runner_event_params[:finish_time] == nil
+  
+    if runner_event_params[:completed] != "1" || runner_event_params[:finish_time] == "" || !runner_event_params[:finish_time].to_i
       redirect_to runner_events_path
     else @runner_event.update(runner_event_params)
       if @runner_event.save
@@ -46,16 +47,4 @@ class RunnerEventsController < ApplicationController
 
 end
 
-# "runner_event"=>{"completed"=>"1"},
-
-# def update
-#     @song = Song.find(params[:id])
-#
-#     @song.update(song_params)
-#
-#     if @song.save
-#       redirect_to @song
-#     else
-#       render :edit
-#     end
-#   end
+# "runner_event"=>{"completed"=>"1", "finish_time"=>""}
