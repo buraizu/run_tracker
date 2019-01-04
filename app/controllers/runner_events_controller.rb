@@ -4,6 +4,10 @@ class RunnerEventsController < ApplicationController
     @runner_event = RunnerEvent.new
   end
 
+  def index
+    @events = current_runner.events
+  end
+
   def show
     @runner_event = RunnerEvent.find_by(id: params[:id])
     @event = Event.find_by(id: @runner_event.event_id)
@@ -15,17 +19,22 @@ class RunnerEventsController < ApplicationController
     if runner_event.save
       redirect_to runner_path(current_runner.id)
     else
-      render :new
+      binding.pry
+      redirect_to new_runner_event_path
     end
   end
 
   def update
+
     @runner_event = RunnerEvent.find_by(id: params[:id])
-    @runner_event.update(runner_event_params)
-    if @runner_event.save
-      redirect_to runner_event_path(@runner_event.id)
-    else
-      redirect_to runner_path(current_runner.id)
+    if runner_event_params[:completed] != "1" || runner_event_params[:finish_time] == nil
+      redirect_to runner_events_path
+    else @runner_event.update(runner_event_params)
+      if @runner_event.save
+        redirect_to runner_event_path(@runner_event.id)
+      else
+        render :new
+      end
     end
   end
 

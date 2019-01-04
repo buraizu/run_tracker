@@ -6,4 +6,5 @@ class RunnerEvent < ActiveRecord::Base
   validates :runner_id, numericality: {only_integer: true}
   validates :event_id, presence: true
   validates :event_id, numericality: {only_integer: true}
+  
 end

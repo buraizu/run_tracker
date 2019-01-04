@@ -1,4 +1,5 @@
-
+validates :finish_time, numericality: {only_integer: true}
+validates :completed, presence: true
 
 
 <h3>First, set an event</h3>
