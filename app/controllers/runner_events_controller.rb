@@ -1,4 +1,5 @@
 class RunnerEventsController < ApplicationController
+  before_action :check_privileges
 
   def new
     @runner_event = RunnerEvent.new

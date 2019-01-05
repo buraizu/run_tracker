@@ -1,4 +1,5 @@
 class RunnersController < ApplicationController
+  before_action :check_privileges, except: [:new, :create]
 
   def index
     @runners = Runner.all
@@ -21,14 +22,9 @@ class RunnersController < ApplicationController
 
   def show
     @runner = Runner.find_by(id: params[:id])
-  end
-
-  def edit
-    raise params.inspect
-  end
-
-  def update
-    raise params.inspect
+    if current_runner.id != @runner.id
+      redirect_to "/", notice: "You don't have permission to be here"
+    end
   end
 
   private

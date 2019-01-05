@@ -1,4 +1,5 @@
 class RunsController < ApplicationController
+  before_action :check_privileges
 
   def index
     if params[:runner_id].present? && Runner.find_by(id: params[:runner_id])
@@ -28,7 +29,10 @@ class RunsController < ApplicationController
 
   def show
     @run = Run.find_by(id: params[:id])
-
+    binding.pry
+    if current_runner.runner_id != @run.runner_id
+      redirect_to "/", notice: 'You dont have permission to be here'
+    end
   end
 
   private

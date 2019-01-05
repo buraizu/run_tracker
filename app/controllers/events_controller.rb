@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
+  before_action :check_privileges
 
   def index
-
     if params[:runner_id]
       @events = Runner.find_by(id: params[:runner_id]).events
     else
@@ -28,7 +28,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-
     @event = Event.find_by(id: params[:id])
   end
 

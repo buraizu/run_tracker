@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
   helper_method :completed_by
   helper_method :completed_time
   helper_method :valid_update_params
+  helper_method :check_privileges
+
+  def check_privileges
+    redirect_to "/", notice: 'You dont have enough permissions to be here' unless logged_in && current_runner
+  end
+
+  def correct_runner(event)
+    current_runner.id == event[:runner_id]
+  end
 
   def login_required
     if !logged_in
@@ -19,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_runner
-    @current_runner ||= Runner.find_by(id: session[:runner_id])
+    Runner.find_by(id: session[:runner_id])
   end
 
   def current_event

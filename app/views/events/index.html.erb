@@ -1,9 +1,12 @@
-<h1>Goals</h1>
+<h1>Events</h1>
 
-<% @goals.each do |g| %>
-  <%= link_to(g) do %>
-    <p>Check out this goal</p>
+<% @events.each do |e| %>
+  <%= link_to(e) do %>
+    <p>Check out this Event</p>
   <% end %>
-  <p><%= g.description %></p>
-  <p>Completed: <%= g.completed %></p>
+  <h2><%= e.description %></h2>
+  <h4>Completed by: </h4>
+    <% completed_by(e).each do |runner| %>
+      <p><%= runner.username %></p>
+    <% end %>
 <% end %>
