@@ -8,7 +8,7 @@
   <% current_runner.runner_events.each do |r_e| %>
     <% if r_e.completed != nil %>
       <h2>Congratulations on completing this event!</h2>
-      <p><%= event_completed(r_e)%></p>
+      <p><%= event_completed(r_e) %></p>
       <p>Completed in: <%= completed_time(current_runner, Event.find_by(id: r_e.event_id)) %> minutes</p>
       <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
     <% end %>
@@ -18,9 +18,8 @@
 <ul>
   <% current_runner.runner_events.each do |r_e| %>
     <% if r_e.completed == nil %>
-      <h2>Events still to complete:</h2>
+      <h2><%= event_completed(r_e)%></h2>
       <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
-      <p><%= event_completed(r_e)%></p>
       <%= form_for r_e do |f| %>
         <li><%= Event.find_by(id: r_e.event_id).description %></li>
         <%= f.label :completed %>
@@ -36,3 +35,7 @@
 </ul>
 
 <%= link_to "Home", runner_path(current_runner.id) %>
+<br />
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>

@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :events
   resources :runner_events
 
-  get '/signin' => 'sessions#new'
-  post '/signin' => 'sessions#create'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
   get '/auth/github/callback' => 'sessions#create'

@@ -1,3 +1,18 @@
+  scope :by_rating, -> (rating) { select(*).where("rating = ?", rating) }
+
+def is_logged_in
+  session[:runner_id].present?
+end
+
+def current_runner
+  Runner.find_by(id: session[:runner_id])
+end
+
+
+
+
+
+
 def create
   binding.pry
   @runner = Runner.find_or_create_by(id: auth['uid']) do |u|

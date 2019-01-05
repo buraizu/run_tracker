@@ -8,12 +8,18 @@ class ApplicationController < ActionController::Base
   helper_method :completed_time
   helper_method :valid_update_params
 
-  def is_logged_in
-    session[:runner_id].present?
+  def login_required
+    if !logged_in
+      redirect_to login_path
+    end
+  end
+
+  def logged_in
+    !!current_runner
   end
 
   def current_runner
-    Runner.find_by(id: session[:runner_id])
+    @current_runner ||= Runner.find_by(id: session[:runner_id])
   end
 
   def current_event
@@ -26,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   def current_event_description
     if current_runner.runner_events.present?
-      current_runner.runner_events.last.event.description
+      "You're currently training for: #{current_runner.runner_events.last.event.description}"
     else
       "Follow the link below to set your next event"
     end
@@ -34,9 +40,9 @@ class ApplicationController < ActionController::Base
 
   def event_completed(runner_event)
     if runner_event.completed == 0 || runner_event.completed == nil
-      "You haven't completed #{Event.find_by(id: runner_event.event_id).description} yet!"
+      "Event still to complete: #{Event.find_by(id: runner_event.event_id).description}"
     else
-      "Congratulations, you've completed #{Event.find_by(id: runner_event.event_id).description}!"
+      "You've completed #{Event.find_by(id: runner_event.event_id).description}!"
     end
   end
 
