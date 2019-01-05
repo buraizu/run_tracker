@@ -1,3 +1,42 @@
+def create
+  binding.pry
+  @runner = Runner.find_or_create_by(id: auth['uid']) do |u|
+  u.username = auth['info']['name']
+
+  end
+end
+
+
+
+<ActionController::Parameters
+{"code"=>"4e1ec672e8f6e3eb961b",
+  "state"=>"aed03fb6fe36aacc050653802a7d443da5db22f6b88f2606",
+  "controller"=>"sessions",
+  "action"=>"create"}
+  permitted: false>
+
+
+
+# Original Create Action
+
+def create
+  runner_event = RunnerEvent.new(runner_event_params)
+  runner_event.runner_id = current_runner.id
+  if runner_event.save
+    redirect_to runner_path(current_runner.id)
+  else
+    render :new
+  end
+end
+
+# Omniauth Example Create Action
+
+def create
+  @runner = Runner.find_or_create_by(id: auth['uid']) do |u|
+  u.username = auth['info']['name']
+end
+
+
 validates :finish_time, numericality: {only_integer: true}
 validates :completed, presence: true
 
