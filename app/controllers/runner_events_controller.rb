@@ -38,10 +38,20 @@ class RunnerEventsController < ApplicationController
     end
   end
 
+
+
   private
 
     def runner_event_params
       params.require(:runner_event).permit(:runner_id, :event_id, :completed, :finish_time)
+    end
+
+    def valid_update_params(runner_event_params)
+      if runner_event_params[:completed] == "1" && !!runner_event_params[:finish_time].match(/\A\d+\z/)
+        true
+      else
+        false
+      end
     end
 
 end

@@ -1,26 +1,15 @@
 class ApplicationController < ActionController::Base
-  helper_method :is_logged_in
+  helper_method :logged_in
   helper_method :current_runner
   helper_method :current_event
   helper_method :current_event_description
   helper_method :event_completed
   helper_method :completed_by
   helper_method :completed_time
-  helper_method :valid_update_params
   helper_method :check_privileges
 
   def check_privileges
     redirect_to "/", notice: 'You dont have enough permissions to be here' unless logged_in && current_runner
-  end
-
-  def correct_runner(event)
-    current_runner.id == event[:runner_id]
-  end
-
-  def login_required
-    if !logged_in
-      redirect_to login_path
-    end
   end
 
   def logged_in
@@ -75,14 +64,6 @@ class ApplicationController < ActionController::Base
       end
     end
     race_time
-  end
-
-  def valid_update_params(runner_event_params)
-    if runner_event_params[:completed] == "1" && !!runner_event_params[:finish_time].match(/\A\d+\z/)
-      true
-    else
-      false
-    end
   end
 
 end

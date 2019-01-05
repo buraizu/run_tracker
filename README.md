@@ -1,3 +1,11 @@
+
+def login_required
+  if !logged_in
+    redirect_to login_path
+  end
+end
+
+
   scope :by_rating, -> (rating) { select(*).where("rating = ?", rating) }
 
 def is_logged_in
