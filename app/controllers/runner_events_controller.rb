@@ -13,7 +13,15 @@ class RunnerEventsController < ApplicationController
     @event = Event.find_by(id: @runner_event.event_id)
   end
 
-
+  def create
+    runner_event = RunnerEvent.new(runner_event_params)
+    runner_event.runner_id = current_runner.id
+    if runner_event.save
+      redirect_to runner_path(current_runner.id)
+    else
+      render :new
+    end
+  end
 
   def update
     @runner_event = RunnerEvent.find_by(id: params[:id])

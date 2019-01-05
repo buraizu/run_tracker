@@ -2,6 +2,6 @@
 
 <% @runners.each do |r| %>
   <%= link_to(r.username) do %>
-    <p><%= r.first_name %> <%= r.last_name %></p>
+    <%= r.username %>
   <% end %>
 <% end %>

@@ -1,3 +1,5 @@
+
+
 <% if @runner.errors.any? %>
   <div id="error_explanation">
     <h2>
@@ -16,12 +18,6 @@
 <%= form_for @runner, controller: 'runners', action: 'create' do |f| %>
 
   <h1>Sign Up</h1>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  <br />
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  <br />
   <%= f.label :username %>
   <%= f.text_field :username %>
   <br />

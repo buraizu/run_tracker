@@ -34,7 +34,7 @@ class RunnersController < ApplicationController
   private
 
     def runner_params
-      params.require(:runner).permit(:first_name, :last_name, :username, :password)
+      params.require(:runner).permit(:username, :password)
     end
 
 end

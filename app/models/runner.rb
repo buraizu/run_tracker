@@ -1,7 +1,5 @@
 class Runner < ActiveRecord::Base
   has_secure_password
-  validates :first_name, presence: true
-  validates :last_name, presence: true
   validates :username, presence: true
   validates :username, uniqueness: true
 
@@ -9,17 +7,20 @@ class Runner < ActiveRecord::Base
   has_many :runner_events
   has_many :events, through: :runner_events
 
+  def self.find_or_create_by_omniauth(auth_hash)
+    self.where(:username => auth_hash[:info][:nickname]).first_or_create do |runner|
+      runner.password = SecureRandom.hex
+    end
+  end
+
 end
 
-# def goals_attributes=(goals_hashes)         # Not sure about any of this
-#   goals_hashes.each do |i, goal_attributes|
-#     if goal_attributes[:description].present?
-#       goal = Goal.find_or_create_by(description: goal_attributes[:description])
-#       self.goals << goal
-#     end
+
+# def self.find_or_create_by_omniauth(auth_hash)
+#   self.where(:name => auth_hash["info"]["name"]).first_or_create do |user|
+#     user.password = SecureRandom.hex
 #   end
 # end
-
 
 # validates :title, presence: true
 # validates :title, uniqueness: {
