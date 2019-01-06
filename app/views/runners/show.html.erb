@@ -12,7 +12,6 @@
   <p><%= current_runner.username %>, you've gone for <%= @runner.runs.count %> runs!</p>
   <p>Check them out <%= link_to "here", runner_runs_path(@runner.id) %></p>
 
-
 <h4><%= current_runner.username %>'s Events</h4>
   <p><%= @runner.username %>, you have <%= @runner.runner_events.count %> events.
   <p>Check them out <%= link_to "here", runner_events_path %></p>
