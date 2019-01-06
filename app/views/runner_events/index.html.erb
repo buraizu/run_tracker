@@ -2,40 +2,46 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<div class="container">
+  <div class="feature">
 <h1><%= current_runner.username %>'s Events Index</h1>
 
 <ul>
   <% current_runner.runner_events.each do |r_e| %>
     <% if r_e.completed != nil %>
-      <h2>Congratulations on completing this event!</h2>
-      <p><%= event_completed(r_e) %></p>
-      <p>Completed in: <%= completed_time(current_runner, Event.find_by(id: r_e.event_id)) %> minutes</p>
-      <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
+      <div class="highlight">
+        <h2>Congratulations on completing this event!</h2>
+        <p><%= event_completed(r_e) %></p>
+        <p>Completed in: <%= completed_time(current_runner, Event.find_by(id: r_e.event_id)) %> minutes</p>
+        <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
+      </div>
     <% end %>
   <% end %>
 </ul>
 
-<ul>
+
   <% current_runner.runner_events.each do |r_e| %>
     <% if r_e.completed == nil %>
       <h2><%= event_completed(r_e)%></h2>
       <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
       <%= form_for r_e do |f| %>
-        <li><%= Event.find_by(id: r_e.event_id).description %></li>
-        <%= f.label :completed %>
-        <%= f.check_box :completed %>
-        <br />
-        <%= f.label "Finish Time (in minutes)" %>
-        <%= f.text_field :finish_time %>
-        <br />
-        <%= f.submit "Wow that was an awesome event!"%>
+      <h3><%= Event.find_by(id: r_e.event_id).description %></h3>
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+      <br />
+      <%= f.label "Finish Time (in minutes)" %>
+      <%= f.text_field :finish_time %>
+      <br />
+      <%= f.submit "Wow that was an awesome event!"%>
       <% end %>
     <% end %>
   <% end %>
-</ul>
+
 
 <%= link_to "Home", runner_path(current_runner.id) %>
 <br />
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
+  </div>
+</div>

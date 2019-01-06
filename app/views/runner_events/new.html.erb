@@ -1,12 +1,16 @@
-<h1>Set your event here!</h1>
 
+<div class="container">
+  <div class="feature">
+    <h1>Set your event here!</h1>
 
-<%= form_for @runner_event do |f| %>
-  <%= f.label "Event selection" %>
-  <br />
-  <%= f.collection_select(:event_id, Event.all, :id, :description, include_blank: "Select an event") %>
-  <br />
-  <%= f.submit "I can do it!" %>
-<% end %>
+    <%= form_for @runner_event do |f| %>
+      <%= f.label "Event selection" %>
+      <br />
+      <%= f.collection_select(:event_id, Event.all, :id, :description, include_blank: "Select an event") %>
+      <br />
+      <%= f.submit "I can do it!" %>
+    <% end %>
 
-<h3>Don't see the event you're training for?  Add it <%= link_to "here", new_event_path %></h3>
+    <h3>Don't see the event you're training for?  Add it <%= link_to "here", new_event_path %></h3>
+  </div>
+</div>
