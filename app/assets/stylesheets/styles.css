@@ -24,11 +24,11 @@ html, body {
   border-radius: 3%;
   margin: 5px;
   padding: 5px;
+  text-align: left;
 }
 
 .runner_show {
   width: 45%;
-
   margin: 5px;
   background-color: #76aaed;
   display: inline-block;
@@ -38,4 +38,13 @@ html, body {
 
 .field_with_errors {
   border: 2px solid #f00;
+}
+
+.headline {
+  color: #156466;
+}
+
+.notice {
+  color: #f00;
+  font-size: 2em;
 }

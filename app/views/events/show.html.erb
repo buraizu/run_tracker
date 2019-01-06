@@ -1,8 +1,8 @@
 <div class="container">
   <div class="feature">
 
-    <h2>Event:</h2>
-    <p><%= @event.description %></p>
+    <h1>Event:</h1>
+    <h2><%= @event.description %></h2>
 
     <% completed_by(@event).each do |runner| %>
       <div class="highlight">
@@ -11,7 +11,7 @@
       </div>
     <% end %>
 
-    <%= link_to "Home", runner_path(current_runner.id) %>
+    <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
 
   </div>
 </div>
