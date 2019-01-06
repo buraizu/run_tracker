@@ -1,7 +1,9 @@
 class Run< ActiveRecord::Base
   belongs_to :runner
 
-  scope :longest, -> { order(distance: :desc).limit(1) }
+  def self.longest
+    self.order(distance: :desc).first
+  end
 
   validates :course, presence: true
   validates :distance, presence: true
