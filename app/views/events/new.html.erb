@@ -13,13 +13,17 @@
   </div>
 <% end %>
 
-<h1>New Event Page</h1>
+<div class="container">
+  <div class="feature">
+    <h1>New Event Page</h1>
 
-<h3>In the future, it would be great if this app could scrape real events from the web.</h3>
+    <h3>In the future, it would be great if this app could scrape real events from the web.</h3>
 
-<%= form_for @event do |f| %>
-  <h3><%= f.label "Create a new event" %></h3>
-  <%= f.text_field :description %>
-  <br />
-  <%= f.submit %>
-<% end %>
+    <%= form_for @event do |f| %>
+      <h3><%= f.label "Create a new event" %></h3>
+      <%= f.text_field :description %>
+      <br />
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

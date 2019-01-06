@@ -1,0 +1,17 @@
+
+.container {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.feature {
+  background-color: #b8c4d8;
+  border-radius: 2%;
+}
+
+.highlight {
+  background-color: #76a0e8;
+  border: 2px solid #000;
+  display: inline-block;
+}

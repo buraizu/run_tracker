@@ -1,12 +1,19 @@
-<h1>Events</h1>
+<%= stylesheet_link_tag "styles.css" %>
+<div class="container">
+  <div class="feature">
+    <h1>Events</h1>
 
-<% @events.each do |e| %>
-  <%= link_to(e) do %>
-    <p>Check out this Event</p>
-  <% end %>
-  <h2><%= e.description %></h2>
-  <h4>Completed by: </h4>
-    <% completed_by(e).each do |runner| %>
-      <p><%= runner.username %></p>
+    <% @events.each do |e| %>
+      <div class="highlight">
+        <h2><%= e.description %></h2>
+        <h4>Completed by: </h4>
+          <% completed_by(e).each do |runner| %>
+            <p><%= runner.username %></p>
+          <% end %>
+          <%= link_to(e) do %>
+            <p>Check out this Event</p>
+          <% end %>
+        </div>
     <% end %>
-<% end %>
+  </div>
+</div>
