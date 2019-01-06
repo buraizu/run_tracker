@@ -20,26 +20,20 @@
 </ul>
 
 
-  <% current_runner.runner_events.each do |r_e| %>
-    <% if r_e.completed == nil %>
-      <h2><%= event_completed(r_e)%></h2>
-      <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
-      <%= form_for r_e do |f| %>
-      <h3><%= Event.find_by(id: r_e.event_id).description %></h3>
-      <%= f.label :completed %>
-      <%= f.check_box :completed %>
-      <br />
-      <%= f.label "Finish Time (in minutes)" %>
-      <%= f.text_field :finish_time %>
-      <br />
-      <%= f.submit "Wow that was an awesome event!"%>
-      <% end %>
-    <% end %>
+<% current_runner.runner_events.each do |r_e| %>
+  <% if r_e.completed == nil %>
+    <h2><%= event_completed(r_e)%></h2>
+    <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
+    <p>Completed this event? Enter the details <%= link_to "here", edit_runner_event_path(r_e.id) %></p>
   <% end %>
+<% end %>
 
 
+<br />
 <%= link_to "Home", runner_path(current_runner.id) %>
 <br />
+<br />
+
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>

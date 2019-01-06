@@ -1,0 +1,10 @@
+<%= form_for @runner_event do |f| %>
+  <h3><%= Event.find_by(id: @runner_event.event_id).description %></h3>
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+  <br />
+  <%= f.label "Finish Time (in minutes)" %>
+  <%= f.text_field :finish_time %>
+  <br />
+  <%= f.submit "Wow that was an awesome event!"%>
+<% end %>

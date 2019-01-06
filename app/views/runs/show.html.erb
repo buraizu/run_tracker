@@ -1,9 +1,13 @@
-<h2>Run: </h2>
+<div class="container">
+  <div class="feature">
+    <h2>Run: </h2>
 
-<h3><%= Runner.find_by(id: @run.runner_id).username %></h3>
+    <h3><%= Runner.find_by(id: @run.runner_id).username %></h3>
 
-<p>Course: <%= @run.course %></p>
-<p>Review: <%= @run.review %></p>
-<p>Rating: <%= @run.rating %></p>
+    <p>Course: <%= @run.course %></p>
+    <p>Review: <%= @run.review %></p>
+    <p>Rating: <%= @run.rating %></p>
 
-<%= link_to "Home", runner_path(@run.runner_id) %>
+    <h3><%= link_to "Home", runner_path(@run.runner_id) %></h3>
+  </div>
+</div>

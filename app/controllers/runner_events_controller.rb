@@ -28,6 +28,10 @@ class RunnerEventsController < ApplicationController
     end
   end
 
+  def edit
+    @runner_event = RunnerEvent.find_by(id: params[:id])
+  end
+
   def update
     @runner_event = RunnerEvent.find_by(id: params[:id])
     if !valid_update_params(runner_event_params)

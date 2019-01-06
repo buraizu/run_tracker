@@ -1,13 +1,20 @@
 
+html, body {
+  height: 100%;
+}
+
 .container {
   width: 80%;
+  height: 100%;
   text-align: center;
   margin: 0 auto;
+  background-color: #d8e8ff;
 }
 
 .feature {
   background-color: #b8c4d8;
   border-radius: 2%;
+  padding: 5px;
 }
 
 .highlight {
@@ -16,6 +23,17 @@
   display: inline-block;
   border-radius: 3%;
   margin: 5px;
+  padding: 5px;
+}
+
+.runner_show {
+  width: 45%;
+
+  margin: 5px;
+  background-color: #76aaed;
+  display: inline-block;
+  font-size: 2em;
+  border-radius: 3%;
 }
 
 .field_with_errors {
