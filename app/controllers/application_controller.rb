@@ -1,15 +1,14 @@
 class ApplicationController < ActionController::Base
+  helper_method :check_privileges
   helper_method :logged_in
   helper_method :current_runner
-  helper_method :current_event
   helper_method :current_event_description
   helper_method :event_completed
   helper_method :completed_by
   helper_method :completed_time
-  helper_method :check_privileges
 
   def check_privileges
-    redirect_to "/", notice: 'You dont have enough permissions to be here' unless logged_in && current_runner
+    redirect_to "/", notice: 'You dont have permission for that' unless logged_in && current_runner
   end
 
   def logged_in
@@ -18,14 +17,6 @@ class ApplicationController < ActionController::Base
 
   def current_runner
     @current_runner || Runner.find_by(id: session[:runner_id])
-  end
-
-  def current_event
-    if current_runner.runner_events.present?
-      current_runner.runner_events.last.event
-    else
-
-    end
   end
 
   def current_event_description

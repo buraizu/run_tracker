@@ -1,4 +1,15 @@
 
+def current_event
+  if current_runner.runner_events.present?
+    current_runner.runner_events.last.event
+  else
+
+  end
+end
+
+
+if params[:runner_id].present? && current_runner.id == params[:runner_id].to_i
+
 def login_required
   if !logged_in
     redirect_to login_path

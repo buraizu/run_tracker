@@ -2,7 +2,7 @@ class RunsController < ApplicationController
   before_action :check_privileges
 
   def index
-    if params[:runner_id].present? && current_runner.id == params[:runner_id].to_i
+    if correct_runner
       @runs = Runner.find_by(id: params[:runner_id]).runs
       @runner = Runner.find_by(id: params[:runner_id])
     else
@@ -11,7 +11,7 @@ class RunsController < ApplicationController
   end
 
   def new
-    if params[:runner_id].present? && current_runner.id == params[:runner_id].to_i
+    if correct_runner
       @run = Run.new(runner_id: params[:runner_id])
     else
       redirect_to "/", notice: "You don't have permission to be here"
@@ -30,7 +30,7 @@ class RunsController < ApplicationController
   def show
     @run = Run.find_by(id: params[:id])
     if current_runner.id != @run.runner_id
-      redirect_to "/", notice: 'You dont have permission to be here'
+      redirect_to "/", notice: "You don't have permission to be here"
     end
   end
 
@@ -60,6 +60,10 @@ class RunsController < ApplicationController
 
     def run_params
       params.require(:run).permit(:distance, :time, :course, :review, :rating, :runner_id)
+    end
+
+    def correct_runner
+      params[:runner_id].present? && current_runner.id == params[:runner_id].to_i
     end
 
 end
