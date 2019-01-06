@@ -11,7 +11,11 @@ class RunnerEventsController < ApplicationController
 
   def show
     @runner_event = RunnerEvent.find_by(id: params[:id])
-    @event = Event.find_by(id: @runner_event.event_id)
+    if @runner_event.runner_id == current_runner.id
+      @event = Event.find_by(id: @runner_event.event_id)
+    else
+      redirect_to "/", notice: "You don't have permission to view this event"
+    end
   end
 
   def create
