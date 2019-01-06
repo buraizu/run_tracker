@@ -1,16 +1,17 @@
 <h1>Runs</h1>
 
 <% @runs.each do |run| %>
-  <%= link_to(run) do %>
-    <p>Check out this run!</p>
-  <% end %>
-  <p><%= run.course %></p>
+
+  <p>Nice job, you ran the <%= run.course %> course!</p>
   <p>Runner: <%= Runner.find_by(id: run.runner_id).username %></p>
 
   <p>Distance: <%= run.distance %></p>
   <p>Time: <%= run.time %></p>
   <p>Rating: <%= run.rating %></p>
   <p>Review: <%= run.review %></p>
+
+  <p>Something not right? <%= link_to "Edit", edit_run_path(run.id) %></p>
+
 
 <% end %>
 

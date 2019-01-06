@@ -14,7 +14,7 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.belongs_to :runner, index: true
       t.string :course
       t.float :distance
-      t.float :time
+      t.integer :time
       t.text :review
       t.integer :rating
     end

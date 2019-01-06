@@ -1,0 +1,24 @@
+
+
+<h3><%= Runner.find_by(id: @run.runner_id).username %></h3>
+
+<%= form_for @run do |f| %>
+
+  <%= f.hidden_field :runner_id %>
+  <%= f.label :course %>
+  <%= f.text_field :course %>
+  <br />
+  <%= f.label :distance %>
+  <%= f.text_field :distance %>
+  <br />
+  <%= f.label "Time (in minutes)" %>
+  <%= f.text_field :time %>
+  <br />
+  <%= f.label :review %>
+  <%= f.text_area :review %>
+  <br />
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <br />
+  <%= f.submit %>
+<% end %>

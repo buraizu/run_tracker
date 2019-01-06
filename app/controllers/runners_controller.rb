@@ -1,10 +1,6 @@
 class RunnersController < ApplicationController
   before_action :check_privileges, except: [:new, :create]
 
-  def index
-    @runners = Runner.all
-  end
-
   def new
     @runner = Runner.new
   end

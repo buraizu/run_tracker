@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 1) do
     t.integer "runner_id"
     t.string "course"
     t.float "distance"
-    t.float "time"
+    t.integer "time"
     t.text "review"
     t.integer "rating"
     t.index ["runner_id"], name: "index_runs_on_runner_id"

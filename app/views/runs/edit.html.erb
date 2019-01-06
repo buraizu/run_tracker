@@ -1,0 +1,41 @@
+<% if @run.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@run.errors.count, "error") %>
+      prohibited this run from being saved:
+    </h2>
+
+    <ul>
+    <% @run.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<h1>Edit Run Page</h1>
+
+<h3><%= Runner.find_by(id: @run.runner_id).username %></h3>
+
+<%= form_for @run do |f| %>
+
+  <%= f.hidden_field :runner_id %>
+  <%= f.label :course %>
+  <%= f.text_field :course %>
+  <br />
+  <%= f.label :distance %>
+  <%= f.text_field :distance %>
+  <br />
+  <%= f.label "Time (in minutes)" %>
+  <%= f.text_field :time %>
+  <br />
+  <%= f.label :review %>
+  <%= f.text_area :review %>
+  <br />
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <br />
+  <%= f.submit %>
+<% end %>
