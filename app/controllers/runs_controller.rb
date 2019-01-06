@@ -35,14 +35,16 @@ class RunsController < ApplicationController
   end
 
   def edit
-    @run = Run.find_by(id: params[:id])
+    if current_runner.id == Run.find_by(id: params[:id]).runner_id
+      @run = Run.find_by(id: params[:id])
+    else
+      redirect_to "/", notice: "You don't have permission to be here"
+    end
   end
 
   def update
     @run = Run.find_by(id: params[:id])
-
     if @run.runner_id == current_runner.id
-      binding.pry
       @run.update(run_params)
       if @run.save
         redirect_to run_path(@run)

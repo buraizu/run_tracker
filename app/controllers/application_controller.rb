@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_runner
-    Runner.find_by(id: session[:runner_id])
+    @current_runner || Runner.find_by(id: session[:runner_id])
   end
 
   def current_event
