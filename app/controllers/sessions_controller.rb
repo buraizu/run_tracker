@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   def new
   end
 
-
   def create
    if auth_hash = request.env["omniauth.auth"]
      @runner = Runner.find_or_create_by_omniauth(auth_hash)

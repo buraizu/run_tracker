@@ -63,7 +63,3 @@ class RunnerEventsController < ApplicationController
     end
 
 end
-
-# \A[0-9]+\z
-
-# "runner_event"=>{"completed"=>"1", "finish_time"=>""}

@@ -49,12 +49,3 @@ class EventsController < ApplicationController
     end
 
 end
-
-# def create
-#   @run = Run.new(run_params)
-#   if @run.valid? && @run.save
-#     redirect_to run_path(@run.id)
-#   else
-#     render :new
-#   end
-# end

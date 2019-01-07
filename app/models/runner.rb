@@ -3,8 +3,6 @@ class Runner < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
 
-  scope :longest, -> { order(distance: :desc).limit(1) }
-
   has_many :runs
   has_many :runner_events
   has_many :events, through: :runner_events

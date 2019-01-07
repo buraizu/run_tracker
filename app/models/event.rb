@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
 
   def new
-    raise params.inspect
+  
   end
 
   def self.accomplished
