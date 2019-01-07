@@ -46,8 +46,6 @@ class RunnerEventsController < ApplicationController
     end
   end
 
-
-
   private
 
     def runner_event_params
