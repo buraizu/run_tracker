@@ -24,7 +24,7 @@ class RunnerEventsController < ApplicationController
     if runner_event.save
       redirect_to runner_path(current_runner.id)
     else
-      render :new
+      redirect_to new_runner_event_path, notice: "Please enter a valid event"
     end
   end
 
