@@ -3,8 +3,8 @@ class RunsController < ApplicationController
 
   def index
     if correct_runner
-      @runs = Runner.find_by(id: params[:runner_id]).runs
       @runner = Runner.find_by(id: params[:runner_id])
+      @runs = @runner.runs
     else
       redirect_to "/", notice: "You don't have permission to be here"
     end

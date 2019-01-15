@@ -42,6 +42,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def leaderboard
+    @events = Event.all
+    
+  end
+
   private
 
     def event_params

@@ -3,15 +3,15 @@
 <h1><%= current_runner.username %>'s Events Index</h1>
 
 <ul>
-  <% current_runner.runner_events.each do |r_e| %>
-    <% if r_e.completed != nil %>
+  <% current_runner.runner_events.accomplished.each do |r_e| %>
+
       <div class="highlight">
         <h2>Congratulations on completing this event!</h2>
         <p><%= event_completed(r_e) %></p>
         <p>Completed in: <%= completed_time(current_runner, Event.find_by(id: r_e.event_id)) %> minutes</p>
         <p><%= link_to "Event Details", event_path(Event.find_by(id: r_e.event_id)) %></p>
       </div>
-    <% end %>
+    
   <% end %>
 </ul>
 

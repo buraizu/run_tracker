@@ -11,5 +11,4 @@ class Event < ActiveRecord::Base
     scope :completed, -> { where(completed: true) }
   end
 
-
 end

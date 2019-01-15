@@ -6,5 +6,13 @@ class RunnerEvent < ActiveRecord::Base
   validates :runner_id, numericality: {only_integer: true}
   validates :event_id, presence: true
   validates :event_id, numericality: {only_integer: true}
-  
+
+  def self.quickest
+    self.order(finish_time: :asc).first
+  end
+
+
+    scope :accomplished, -> { where(completed: true) }
+
+
 end
