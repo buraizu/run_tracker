@@ -35,7 +35,22 @@
 <script type="text/javascript" charset="utf-8">
 
   $(function() {
-  
-  })
+    $('form').submit(function(event) {
+      event.preventDefault();
+
+      var values = $(this).serialize();
+
+      var posting = $.post('/runs', values);
+
+      posting.done(function(data) {
+        var run = data;
+        $("#runCourse").text(run["course"]);
+        $("#runDistance").text(run["distance"]);
+        $("#runTime").text(run["time"]);
+        $("#runReview").text(run["review"]);
+        $("#runRating").text(run["rating"]);
+      });
+    });
+  });
 
 </script>
