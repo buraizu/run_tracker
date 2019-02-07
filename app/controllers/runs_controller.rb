@@ -31,6 +31,11 @@ class RunsController < ApplicationController
     @run = Run.find_by(id: params[:id])
     if current_runner.id != @run.runner_id
       redirect_to "/", notice: "You don't have permission to be here"
+    else
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @run }
+      end
     end
   end
 
