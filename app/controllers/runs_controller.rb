@@ -21,7 +21,8 @@ class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
     if @run.valid? && @run.save
-      redirect_to run_path(@run.id)
+
+      render json: @run, status: 201
     else
       render :new
     end
