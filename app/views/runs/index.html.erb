@@ -1,50 +1,26 @@
-<div class="container">
-  <div class="feature">
 
-    <h1>Runs</h1>
 
-    <% @runs.each do |run| %>
-      <div class="highlight">
-        <h3>Nice job, you ran the <%= run.course %> course!</h3>
-        <p>Runner: <%= Runner.find_by(id: run.runner_id).username %></p>
-
-        <p>Distance: <%= run.distance %></p>
-        <p>Time: <%= run.time %></p>
-        <p>Rating: <%= run.rating %></p>
-        <p>Review: <%= run.review %></p>
-
-        <p>Something not right? <%= link_to "Edit", edit_run_path(run.id) %></p>
-      </div>
-    <% end %>
-
-    <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
-
-    <br />
-
-    <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-      <input type=submit value='logout'>
-    <% end %>
-
-  </div>
-</div>
+<button id="getRuns">Get Runs via JavaScript</button>
 
 <h1>Runs via JavaScript</h1>
 <% @runs.each do |run| %>
   <div id="run-<%= run.id %>">
     <h3><%= run.course %></h3>
-    <p><%= run.distance %></p>
-    <p><%= run.time %></p>
-    <p><%= run.review %></p>
-    <p><%= run.rating %></p>
+    <p><%= run.distance %> Miles</p>
+    <button class="moreInfo" data-id="<%= run.id %>">More info</button>
+    <p></p>
+    <p></p>
   </div>
 <% end %>
 
-<script type="text/javascript" charset="utf-8">
+<div id="test">
 
-  $(function() {
-    $.get("/runs/.json", function(runs) {
-      console.log("whoa");
-      console.log(runs);
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(".moreInfo").on("click", function() {
+    $.get("/runs", function(runs) {
+      $("#test").html(runs);
     });
   });
 

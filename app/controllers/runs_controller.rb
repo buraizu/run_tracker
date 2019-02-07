@@ -2,12 +2,13 @@ class RunsController < ApplicationController
   before_action :check_privileges
 
   def index
-    if correct_runner
-      @runner = Runner.find_by(id: params[:runner_id])
-      @runs = @runner.runs
-    else
-      redirect_to "/", notice: "You don't have permission to be here"
-    end
+    # if correct_runner
+      # @runner = Runner.find_by(id: params[:runner_id])
+      # @runs = @runner.runs
+    # else
+    #   redirect_to "/", notice: "You don't have permission to be here"
+    # end
+    @runs = Run.all
   end
 
   def new
