@@ -1,3 +1,6 @@
+runners/show
+<h2>Your longest training run was: <%= @runner.runs.longest.distance %> miles</h2>
+
 Run_Tracker is an app written for keeping track of your run training and run events!
 
 Ruby Version: 2.3.3

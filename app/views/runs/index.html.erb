@@ -27,3 +27,25 @@
 
   </div>
 </div>
+
+<h1>Runs via JavaScript</h1>
+<% @runs.each do |run| %>
+  <div id="run-<%= run.id %>">
+    <h3><%= run.course %></h3>
+    <p><%= run.distance %></p>
+    <p><%= run.time %></p>
+    <p><%= run.review %></p>
+    <p><%= run.rating %></p>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+
+  $(function() {
+    $.get("/runs/.json", function(runs) {
+      console.log("whoa");
+      console.log(runs);
+    });
+  });
+
+</script>

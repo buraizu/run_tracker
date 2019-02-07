@@ -2,7 +2,7 @@
   <div class="feature">
     <h1 class="headline">Welcome, <%= @runner.username %>!</h1>
     <h2><%= current_event_description %></h2>
-    <h2>Your longest training run was: <%= @runner.runs.longest.distance %> miles</h2>
+    
     <h3><%= link_to "Choose an event to train for", new_runner_event_path %></h3>
   </div>
 
