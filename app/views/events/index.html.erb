@@ -1,19 +1,20 @@
-<%= stylesheet_link_tag "styles.css" %>
-<div class="container">
-  <div class="feature">
-    <h1>Events</h1>
+<h1>Events via JavaScript</h1>
 
-    <% @events.each do |e| %>
-      <div class="highlight">
-        <h2><%= e.description %></h2>
-        <h4>Completed by: </h4>
-          <% completed_by(e).each do |runner| %>
-            <p><%= runner.username %></p>
-          <% end %>
-          <%= link_to(e) do %>
-            <p>Check out this Event</p>
-          <% end %>
-        </div>
-    <% end %>
-  </div>
+<div id="eventsDiv">
+
 </div>
+
+<button id="getEvents">Get Events Via JavaScript</button>
+
+<script type="text/javascript" charset="utf-8">
+
+  $(function() {
+    $("#getEvents").on("click", function(){
+      $.get("/events", function(data){
+        debugger;
+        $("#eventsDiv").html(data);
+      })
+    })
+  })
+
+</script>

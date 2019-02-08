@@ -1,3 +1,24 @@
+events/index
+<%= stylesheet_link_tag "styles.css" %>
+<div class="container">
+  <div class="feature">
+    <h1>Events</h1>
+
+    <% @events.each do |e| %>
+      <div class="highlight">
+        <h2><%= e.description %></h2>
+        <h4>Completed by: </h4>
+          <% completed_by(e).each do |runner| %>
+            <p><%= runner.username %></p>
+          <% end %>
+          <%= link_to(e) do %>
+            <p>Check out this Event</p>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
 runs/index
 @runner = Runner.find_by(id: params[:runner_id])
 
