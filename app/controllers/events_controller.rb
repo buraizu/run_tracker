@@ -2,11 +2,7 @@ class EventsController < ApplicationController
   before_action :check_privileges
 
   def index
-    if params[:runner_id]
-      @events = Runner.find_by(id: params[:runner_id]).events
-    else
-      @events = Event.all
-    end
+    @events = Event.all
   end
 
   def new
@@ -44,7 +40,7 @@ class EventsController < ApplicationController
 
   def leaderboard
     @events = Event.all
-    
+
   end
 
   private

@@ -1,4 +1,11 @@
-events/index
+EventsController/index
+if params[:runner_id]
+  @events = Runner.find_by(id: params[:runner_id]).events
+else
+  @events = Event.all
+end
+
+views/events/index
 <%= stylesheet_link_tag "styles.css" %>
 <div class="container">
   <div class="feature">
