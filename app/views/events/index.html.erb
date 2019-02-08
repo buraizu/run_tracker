@@ -10,9 +10,9 @@
 
   $(function() {
     $("#getEvents").on("click", function(){
-      $.get("/events", function(data){
-        
-        $("#eventsDiv").html(data);
+      $.get("/events.json", function(data){
+        debugger;
+        $("#eventsDiv").html(data + "whoa");
       })
     })
   })
