@@ -4,6 +4,12 @@
 
 </div>
 
+<% @events.each do |event| %>
+  <div id="event-<%= event.id %>">
+    <p id="event-<%= event.id %>-description"></p>
+  </div>
+<% end %>
+
 <button id="getEvents">Get Events Via JavaScript</button>
 
 <script type="text/javascript" charset="utf-8">
@@ -11,7 +17,7 @@
   $(function() {
     $("#getEvents").on("click", function(){
       $.get("/events.json", function(data){
-        debugger;
+  
         $("#eventsDiv").html(data + "whoa");
       })
     })

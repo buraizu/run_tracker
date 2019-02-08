@@ -1,3 +1,8 @@
+$.each(data, function() {
+  $(#"event-" + this["id"]).html(this[""])
+})
+
+
 EventsController/index
 if params[:runner_id]
   @events = Runner.find_by(id: params[:runner_id]).events
