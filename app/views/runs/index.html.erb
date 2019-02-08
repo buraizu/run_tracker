@@ -4,13 +4,17 @@
 
 <h1>Runs via JavaScript</h1>
 <% @runs.each do |run| %>
+
+  <h3><%= run.course %></h3>
+  <p><%= run.distance %> Miles</p>
+  <button class="moreInfo" data-id="<%= run.id %>">More info</button>
+
   <div id="run-<%= run.id %>">
-    <h3><%= run.course %></h3>
-    <p><%= run.distance %> Miles</p>
-    <button class="moreInfo" data-id="<%= run.id %>">More info</button>
-    <p></p>
-    <p></p>
+    <p id="run-<%= run.id %>-time">whoa</p>
+    <p id="run-<%= run.id %>-review"></p>
+    <p id="run-<%= run.id %>-rating"></p>
   </div>
+
 <% end %>
 
 <div id="test">
@@ -18,9 +22,15 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  $(".moreInfo").on("click", function() {
-    $.get("/runs", function(runs) {
-      $("#test").html(runs);
+  $(function() {
+    $(".moreInfo").on("click", function() {
+      var id = $(this).data("id");
+      $.get("/runs", function(run) {
+        debugger;
+        $("#run-" + id + "-time").html(run["time"]);
+        $("#run-" + id + "-review").html(run["review"]);
+        $("#run-" + id + "-rating").html(run["rating"]);
+      });
     });
   });
 
