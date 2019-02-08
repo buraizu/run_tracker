@@ -11,7 +11,7 @@
   $(function() {
     $("#getEvents").on("click", function(){
       $.get("/events", function(data){
-        debugger;
+        
         $("#eventsDiv").html(data);
       })
     })
