@@ -2,7 +2,8 @@
 
 <% @events.each do |event| %>
   <div id="event-<%= event.id %>">
-    <p id="event-<%= event.id %>-description"></p>
+    <h3 id="event-<%= event.id %>-description"></h3>
+    <p id="event-<%= event.id %>-link"></p>
   </div>
 <% end %>
 
@@ -14,7 +15,11 @@
     $("#getEvents").on("click", function(){
       $.get("/events.json", function(data){
         for(var key in data) {
-          $("#event-" + data[key]["id"]).html(data[key]["description"])
+          let id = data[key]["id"];
+          let description = data[key]["description"];
+          let link = `<a href="/events/${id}">Check out this Event</a>`
+          $("#event-" + id + "-description").text(description);
+          $("#event-" + id + "-link").html(link);
         }
         $("#eventsDiv").html(data + "whoa");
       })
