@@ -1,9 +1,5 @@
 <h1>Events via JavaScript</h1>
 
-<div id="eventsDiv">
-
-</div>
-
 <% @events.each do |event| %>
   <div id="event-<%= event.id %>">
     <p id="event-<%= event.id %>-description"></p>
@@ -17,7 +13,9 @@
   $(function() {
     $("#getEvents").on("click", function(){
       $.get("/events.json", function(data){
-  
+        for(var key in data) {
+          $("#event-" + data[key]["id"]).html(data[key]["description"])
+        }
         $("#eventsDiv").html(data + "whoa");
       })
     })
