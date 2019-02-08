@@ -10,7 +10,7 @@
   <button class="moreInfo" data-id="<%= run.id %>">More info</button>
 
   <div id="run-<%= run.id %>">
-    <p id="run-<%= run.id %>-time">whoa</p>
+    <p id="run-<%= run.id %>-time"></p>
     <p id="run-<%= run.id %>-review"></p>
     <p id="run-<%= run.id %>-rating"></p>
   </div>
@@ -22,11 +22,11 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
+
   $(function() {
     $(".moreInfo").on("click", function() {
       var id = $(this).data("id");
-      $.get("/runs", function(run) {
-        debugger;
+      $.get("/runs/" + id + ".json", function(run) {
         $("#run-" + id + "-time").html(run["time"]);
         $("#run-" + id + "-review").html(run["review"]);
         $("#run-" + id + "-rating").html(run["rating"]);

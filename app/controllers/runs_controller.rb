@@ -2,15 +2,16 @@ class RunsController < ApplicationController
   before_action :check_privileges
 
   def index
-    if correct_runner
-      @runner = Runner.find_by(id: params[:runner_id])
-      @runs = @runner.runs
-    end
+    @runner = current_runner
+    @runs = @runner.runs
     # else
     #   redirect_to "/", notice: "You don't have permission to be here"
     # end
     # @runs = Run.all
-
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @runs }
+    end
 
   end
 

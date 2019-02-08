@@ -1,3 +1,6 @@
+runs/index
+@runner = Runner.find_by(id: params[:runner_id])
+
 runs/index ~!!
 <div class="container">
   <div class="feature">
