@@ -3,7 +3,7 @@
   <h1>Event:</h1>
   <h2><%= @event.description %></h2>
 
-  <button id="getFinishers">Get Finishers via JavaScript!</button>
+  <button class="getFinishers" data-id="<%= @event.id %>">Get finishers</button>
 
   <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
 
@@ -11,58 +11,11 @@
 
 <script type="text/javascript" charset="utf-8">
 
-  $("#getFinishers").on("click", function() {
-    debugger;
+  $(".getFinishers").on("click", function() {
+    var id = parseInt(this.dataset["id"])
+    $.get("/events/" + id + ".json", function(event) {
+      debugger;
+    })
   })
-
-</script>
-
-<script type="text/javascript" charset="utf-8">
-
-  class Run {
-    constructor(course, distance, time, review, rating) {
-      this.course = course;
-      this.distance = distance;
-      this.time = time;
-      this.review = review;
-      this.rating = rating;
-    }
-
-    pace() {
-      let timeInHours = this.time / 60;
-      return (this.distance / timeInHours).toFixed(2);
-    }
-  }
-
-  $(function() {
-    $('form').submit(function(event) {
-      event.preventDefault();
-
-      var values = $(this).serialize();
-
-      var posting = $.post('/runs', values);
-
-      posting.done(function(data) {
-        const course = data["course"];
-        const distance = data["distance"];
-        const time = data["time"];
-        const review = data["review"];
-        const rating = data["rating"];
-        const run = new Run(course, distance, time, review, rating)
-
-        <!-- Perhaps have blank div and set className to "highlight" here? -->
-        $("#runCourse").text(`Course: ${run.course}`);
-        $("#runDistance").text(`Distance: ${run.distance}`);
-        $("#runTime").text(`Time: ${run.time}`);
-        $("#runReview").text(`Review: ${run.review}`);
-        $("#runRating").text(`Rating: ${run.rating}`);
-        $("#runPace").text(`Pace: ${run.pace()} miles per hour!`);
-
-        $("form").each(function(){
-          this.reset();
-        });
-      });
-    });
-  });
 
 </script>
