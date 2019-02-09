@@ -11,8 +11,6 @@ class RunnerEvent < ActiveRecord::Base
     self.order(finish_time: :asc).first
   end
 
-
-    scope :accomplished, -> { where(completed: true) }
-
+  scope :accomplished, -> { where(completed: true) }
 
 end

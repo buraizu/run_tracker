@@ -1,3 +1,6 @@
+events/leaderboard
+<p><%= e.runner_events.accomplished.quickest.runner.username %></p>
+
 $.each(data, function() {
   $(#"event-" + this["id"]).html(this[""])
 })

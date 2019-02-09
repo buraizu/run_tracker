@@ -19,7 +19,6 @@
 
 <div class="feature">
   <%= form_for @runner, controller: 'runners', action: 'create' do |f| %>
-
     <h1>Sign Up</h1>
     <%= f.label :username %>
     <%= f.text_field :username %>
@@ -28,7 +27,6 @@
     <%= f.text_field :password %>
     <br />
     <%= f.submit "Create Runner" %>
-
   <% end %>
 
   <%= link_to('Login with GitHub', '/auth/github') %>

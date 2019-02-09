@@ -1,5 +1,5 @@
 <% @events.each do |e| %>
   <p><%= e.description %></p>
-  <p><%= e.runner_events.accomplished.quickest.runner.username %></p>
+
   <p><%= e.runner_events.accomplished.quickest.finish_time %> minutes</p>
 <% end %>
