@@ -68,6 +68,7 @@
         const rating = data["rating"];
         const run = new Run(course, distance, time, review, rating)
 
+        <!-- Perhaps have blank div and set className to "highlight" here? -->
         $("#runCourse").text(`Course: ${run.course}`);
         $("#runDistance").text(`Distance: ${run.distance}`);
         $("#runTime").text(`Time: ${run.time}`);

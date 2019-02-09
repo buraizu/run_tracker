@@ -1,3 +1,12 @@
+Events/show
+<% completed_by(@event).each do |runner| %>
+  <div class="highlight">
+    <h3>Completed by: <%= runner.username %></h3>
+    <h4>Completed in: <%= completed_time(runner, @event) %> minutes</h4>
+  </div>
+<% end %>
+
+Way to reset form fields on New Run.  I chose a different way.
 $.each(data, function() {
   $(#"event-" + this["id"]).html(this[""])
 })
