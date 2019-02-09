@@ -16,10 +16,11 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by(id: params[:id])
     @finishers = completed_by(@event.runners)
-    binding.pry
+
+
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @event }
+      format.json { render json: @finishers }
     end
   end
 
@@ -60,15 +61,15 @@ class EventsController < ApplicationController
     end
 
     def completed_by(runners)
-      finishers = []
+      finished_events = []
       runners.each do |runner|
         runner.runner_events.each do |r_e|
           if r_e.completed != nil && r_e.event_id == @event.id
-            finishers << runner
+            finished_events << r_e
           end
         end
       end
-      finishers
+      finished_events
     end
 
 end
