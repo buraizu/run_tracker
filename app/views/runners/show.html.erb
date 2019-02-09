@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <div class="feature">
   <h1 class="headline">Welcome, <%= @runner.username %>!</h1>
   <h2><%= current_event_description %></h2>

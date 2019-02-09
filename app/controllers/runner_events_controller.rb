@@ -21,7 +21,9 @@ class RunnerEventsController < ApplicationController
   def create
     runner_event = RunnerEvent.new(runner_event_params)
     runner_event.runner_id = current_runner.id
-    if runner_event.save
+  
+
+    if !current_runner.events.include?(runner_event.event) && runner_event.save
       redirect_to runner_path(current_runner.id)
     else
       redirect_to new_runner_event_path, notice: "Please enter a valid event"

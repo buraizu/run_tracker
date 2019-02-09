@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
     event.runners.each do |r|
       r.runner_events.each do |r_e|
         if r_e.completed != nil && r_e.event_id == event.id
+          
           runners << r
         end
       end
