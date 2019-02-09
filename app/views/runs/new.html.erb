@@ -44,15 +44,25 @@
 
 <div id="postResult">
 
-  <p id="runCourse"></p>
-  <p id="runDistance"></p>
-  <p id="runTime"></p>
-  <p id="runReview"></p>
-  <p id="runRating"></p>
+  <span id="runCourse"></span>
+  <p id="runDistance"></span>
+  <p id="runTime"></span>
+  <p id="runReview"></span>
+  <p id="runRating"></span>
 
 </div>
 
 <script type="text/javascript" charset="utf-8">
+
+  class Run {
+    constructor(course, distance, time, review, rating) {
+      this.course = course;
+      this.distance = distance;
+      this.time = time;
+      this.review = review;
+      this.rating = rating;
+    }
+  }
 
   $(function() {
     $('form').submit(function(event) {
@@ -63,12 +73,18 @@
       var posting = $.post('/runs', values);
 
       posting.done(function(data) {
-        var run = data;
-        $("#runCourse").text(run["course"]);
-        $("#runDistance").text(run["distance"]);
-        $("#runTime").text(run["time"]);
-        $("#runReview").text(run["review"]);
-        $("#runRating").text(run["rating"]);
+        const course = data["course"];
+        const distance = data["distance"];
+        const time = data["time"];
+        const review = data["review"];
+        const rating = data["rating"];
+        const run = new Run(course, distance, time, review, rating)
+
+        $("#runCourse").text(run.course);
+        $("#runDistance").text(run.distance);
+        $("#runTime").text(run.time);
+        $("#runReview").text(run.review);
+        $("#runRating").text(run.rating);
       });
     });
   });
