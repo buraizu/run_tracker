@@ -1,17 +1,15 @@
-<div class="container">
-  <div class="feature">
+<div class="feature">
 
-    <h1>Event:</h1>
-    <h2><%= @event.description %></h2>
+  <h1>Event:</h1>
+  <h2><%= @event.description %></h2>
 
-    <% completed_by(@event).each do |runner| %>
-      <div class="highlight">
-        <h3>Completed by: <%= runner.username %></h3>
-        <h4>Completed in: <%= completed_time(runner, @event) %> minutes</h4>
-      </div>
-    <% end %>
+  <% completed_by(@event).each do |runner| %>
+    <div class="highlight">
+      <h3>Completed by: <%= runner.username %></h3>
+      <h4>Completed in: <%= completed_time(runner, @event) %> minutes</h4>
+    </div>
+  <% end %>
 
-    <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
+  <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
 
-  </div>
 </div>

@@ -1,15 +1,13 @@
-<div class="container">
-  <div class="feature">
-    <h1><%= current_runner.username %>'s page for <%= @event.description %></h1>
 
-    <h3><%= event_completed(@runner_event) %></h3>
+<div class="feature">
+  <h1><%= current_runner.username %>'s page for <%= @event.description %></h1>
 
-    <h3>Completed in: <%= completed_time(current_runner, @event) %> minutes</h3>
+  <h3><%= event_completed(@runner_event) %></h3>
 
-    <%= link_to "Event Details", event_path(@event.id) %>
+  <h3>Completed in: <%= completed_time(current_runner, @event) %> minutes</h3>
 
-    <br />
+  <%= link_to "Event Details", event_path(@event.id) %>
+  <br />
 
-    <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
-  </div>
+  <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
 </div>

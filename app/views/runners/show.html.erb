@@ -1,29 +1,26 @@
-<div class="container">
-  <div class="feature">
-    <h1 class="headline">Welcome, <%= @runner.username %>!</h1>
-    <h2><%= current_event_description %></h2>
-    
-    <h3><%= link_to "Choose an event to train for", new_runner_event_path %></h3>
-  </div>
+<div class="feature">
+  <h1 class="headline">Welcome, <%= @runner.username %>!</h1>
+  <h2><%= current_event_description %></h2>
 
-  <div class="runner_show">
-    <h3 class="headline"><%= current_runner.username %>'s training runs</h3>
-    <h4>Just back from a run? Log the details <%= link_to "here!", new_runner_run_path(@runner) %></h4>
-    <p><%= current_runner.username %>, you've gone for <%= @runner.runs.count %> runs!</p>
-    <p>Check them out <%= link_to "here", runner_runs_path(@runner.id) %></p>
-  </div>
+  <h3><%= link_to "Choose an event to train for", new_runner_event_path %></h3>
+</div>
 
-  <div class="runner_show">
-    <h3 class="headline"><%= current_runner.username %>'s events</h3>
-    <h4>Follow this link to view or complete your events! <%= link_to "My Events", runner_events_path %></h4>
-    <p><%= @runner.username %>, you have <%= @runner.runner_events.count %> events.
-    <p>Check them out <%= link_to "here", runner_events_path %></p>
-  </div>
+<div class="runner_show">
+  <h3 class="headline"><%= current_runner.username %>'s training runs</h3>
+  <h4>Just back from a run? Log the details <%= link_to "here!", new_runner_run_path(@runner) %></h4>
+  <p><%= current_runner.username %>, you've gone for <%= @runner.runs.count %> runs!</p>
+  <p>Check them out <%= link_to "here", runner_runs_path(@runner.id) %></p>
+</div>
+
+<div class="runner_show">
+  <h3 class="headline"><%= current_runner.username %>'s events</h3>
+  <h4>Follow this link to view or complete your events! <%= link_to "My Events", runner_events_path %></h4>
+  <p><%= @runner.username %>, you have <%= @runner.runner_events.count %> events.
+  <p>Check them out <%= link_to "here", runner_events_path %></p>
+</div>
 
 <div>
   <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
-</div>
-
 </div>
