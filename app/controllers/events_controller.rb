@@ -15,6 +15,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by(id: params[:id])
+    @finishers = completed_by(@event.runners)
+    binding.pry
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @event }
@@ -55,6 +57,18 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:description)
+    end
+
+    def completed_by(runners)
+      finishers = []
+      runners.each do |runner|
+        runner.runner_events.each do |r_e|
+          if r_e.completed != nil && r_e.event_id == @event.id
+            finishers << runner
+          end
+        end
+      end
+      finishers
     end
 
 end
