@@ -44,11 +44,12 @@
 
 <div id="postResult">
 
-  <span id="runCourse"></span>
-  <p id="runDistance"></span>
-  <p id="runTime"></span>
-  <p id="runReview"></span>
-  <p id="runRating"></span>
+  <p>Course: <span id="runCourse"></span></p>
+  <p>Distance: <span id="runDistance"></span></p>
+  <p>Time: <span id="runTime"></span></p>
+  <p>Review: <span id="runReview"></span></p>
+  <p>Rating: <span id="runRating"></span></p>
+  <p>Pace: <span id="runPace"></span><span> miles per hour!</span></p>
 
 </div>
 
@@ -61,6 +62,11 @@
       this.time = time;
       this.review = review;
       this.rating = rating;
+    }
+
+    pace() {
+      let timeInHours = this.time / 60;
+      return (this.distance / timeInHours).toFixed(2);
     }
   }
 
@@ -85,6 +91,7 @@
         $("#runTime").text(run.time);
         $("#runReview").text(run.review);
         $("#runRating").text(run.rating);
+        $("#runPace").text(run.pace());
       });
     });
   });
