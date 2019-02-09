@@ -1,5 +1,6 @@
 events/leaderboard
 <p><%= e.runner_events.accomplished.quickest.runner.username %></p>
+<p><%= e.runner_events.accomplished.quickest.finish_time %> minutes</p>
 
 $.each(data, function() {
   $(#"event-" + this["id"]).html(this[""])
