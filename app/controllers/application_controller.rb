@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_event_description
-    if current_runner.runner_events.present?
+    if current_runner.runner_events.present? && current_runner.runner_events.last.completed == nil
       "You're currently training for: #{current_runner.runner_events.last.event.description}"
     else
       "Follow the link below to set your next event"
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     event.runners.each do |r|
       r.runner_events.each do |r_e|
         if r_e.completed != nil && r_e.event_id == event.id
-          
+
           runners << r
         end
       end
