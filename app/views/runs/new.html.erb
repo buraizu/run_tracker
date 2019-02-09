@@ -75,9 +75,9 @@
         $("#runRating").text(`Rating: ${run.rating}`);
         $("#runPace").text(`Pace: ${run.pace()} miles per hour!`);
 
-        $("form").find("input[type=text], textarea").val("");
-
-        // $(this).closest('form').find("input[type=text], textarea").val("");
+        $("form").each(function(){
+          this.reset();
+        });
       });
     });
   });
