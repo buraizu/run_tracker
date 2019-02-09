@@ -7,9 +7,9 @@
   <button class="moreInfo" data-id="<%= run.id %>">More info</button>
 
   <div id="run-<%= run.id %>">
-    <p>Time: </p><span id="run-<%= run.id %>-time"></span>
-    <p>Review: </p><span id="run-<%= run.id %>-review"></span>
-    <p>Rating: </p><span id="run-<%= run.id %>-rating"></span>
+    <p id="run-<%= run.id %>-time"></p>
+    <p id="run-<%= run.id %>-review"></p>
+    <p id="run-<%= run.id %>-rating"></p>
   </div>
 
 <% end %>
@@ -24,9 +24,9 @@
     $(".moreInfo").on("click", function() {
       var id = $(this).data("id");
       $.get("/runs/" + id + ".json", function(run) {
-        $("#run-" + id + "-time").html(run["time"]);
-        $("#run-" + id + "-review").html(run["review"]);
-        $("#run-" + id + "-rating").html(run["rating"]);
+        $("#run-" + id + "-time").html(`Time: ${run["time"]}`);
+        $("#run-" + id + "-review").html(`Review: ${run["review"]}`);
+        $("#run-" + id + "-rating").html(`Rating: ${run["rating"]}`);
       });
     });
   });

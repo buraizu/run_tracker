@@ -29,8 +29,11 @@
   <p id="runReview"></p>
   <p id="runRating"></p>
   <p id="runPace"></p>
+  <p id="newRunLink"></p>
 
 </div>
+
+<h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
 
 <script type="text/javascript" charset="utf-8">
 
@@ -71,6 +74,7 @@
         $("#runReview").text(`Review: ${run.review}`);
         $("#runRating").text(`Rating: ${run.rating}`);
         $("#runPace").text(`Pace: ${run.pace()} miles per hour!`);
+        
       });
     });
   });
