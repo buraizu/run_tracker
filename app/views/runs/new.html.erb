@@ -44,12 +44,12 @@
 
 <div id="postResult">
 
-  <p>Course: <span id="runCourse"></span></p>
-  <p>Distance: <span id="runDistance"></span></p>
-  <p>Time: <span id="runTime"></span></p>
-  <p>Review: <span id="runReview"></span></p>
-  <p>Rating: <span id="runRating"></span></p>
-  <p>Pace: <span id="runPace"></span><span> miles per hour!</span></p>
+  <p id="runCourse"></p>
+  <p id="runDistance"></p>
+  <p id="runTime"></p>
+  <p id="runReview"></p>
+  <p id="runRating"></p>
+  <p id="runPace"></p>
 
 </div>
 
@@ -86,12 +86,12 @@
         const rating = data["rating"];
         const run = new Run(course, distance, time, review, rating)
 
-        $("#runCourse").text(run.course);
-        $("#runDistance").text(run.distance);
-        $("#runTime").text(run.time);
-        $("#runReview").text(run.review);
-        $("#runRating").text(run.rating);
-        $("#runPace").text(run.pace());
+        $("#runCourse").text(`Course: ${run.course}`);
+        $("#runDistance").text(`Distance: ${run.distance}`);
+        $("#runTime").text(`Time: ${run.time}`);
+        $("#runReview").text(`Review: ${run.review}`);
+        $("#runRating").text(`Rating: ${run.rating}`);
+        $("#runPace").text(`Pace: ${run.pace()} miles per hour!`);
       });
     });
   });
