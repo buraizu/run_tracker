@@ -1,11 +1,13 @@
 <h1>Events via JavaScript</h1>
 
-<% @events.each do |event| %>
-  <div id="event-<%= event.id %>">
-    <h3 id="event-<%= event.id %>-description"></h3>
-    <p id="event-<%= event.id %>-link"></p>
-  </div>
-<% end %>
+<div id="eventDiv">
+  <% @events.each do |event| %>
+    <div id="event-<%= event.id %>">
+      <h3 id="event-<%= event.id %>-description"></h3>
+      <p id="event-<%= event.id %>-link"></p>
+    </div>
+  <% end %>
+</div>
 
 <button id="getEvents">Get Events Via JavaScript</button>
 
@@ -25,6 +27,7 @@
           $("#event-" + id).addClass("highlight");
         }
         $("#getEvents").hide();
+        $("#eventDiv").append("<a href='http://localhost:3000/runner_events/new'>Set your Event</a>")
       })
     })
   })
