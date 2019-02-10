@@ -5,7 +5,7 @@ Run_Tracker is an app written for keeping track of your run training and run eve
 GETTING STARTED
 
 Clone a copy of the app on the Github repository, https://github.com/buraizu/run_tracker.
-From a terminal window, navigate into the project directory. Enter 'bundle install' to download the necessary gems.  When that process is complete, type 'bin/rails s' to start up a local Rails server. Finally, navigate to http://localhost:3000.
+From a terminal window, navigate into the project directory. Enter 'bundle install' to download the necessary gems. Next, type 'rake db:migrate'. When that process is complete, type 'bin/rails s' to start up a local Rails server. Finally, navigate to http://localhost:3000.
 
 VERSIONING
 
@@ -18,3 +18,7 @@ Bryce headline
 LICENSE
 
 This project is licensed under the MIT License
+
+CONTRIBUTING
+
+If you wish to contribute to this repository, please first discuss the change you wish to make via issue, email, or any other method with the author before making a change.
