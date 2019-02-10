@@ -4,15 +4,11 @@ class RunsController < ApplicationController
   def index
     @runner = current_runner
     @runs = @runner.runs
-    # else
-    #   redirect_to "/", notice: "You don't have permission to be here"
-    # end
-    # @runs = Run.all
+
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @runs }
     end
-
   end
 
   def new

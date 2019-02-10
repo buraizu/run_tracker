@@ -17,7 +17,6 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     @finishers = completed_by(@event.runners)
 
-
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @finishers }
