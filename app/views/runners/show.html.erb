@@ -18,9 +18,9 @@
 
 <div class="runner_show">
   <h3 class="headline"><%= current_runner.username %>'s events</h3>
-  <h4>Follow this link to view or complete your events! <%= link_to "My Events", runner_events_path %></h4>
+  <h4>Follow this link to check out all the events! <%= link_to "Events", events_path %></h4>
   <p><%= @runner.username %>, you have <%= @runner.runner_events.count %> events.
-  <p>Check them out <%= link_to "here", runner_events_path %></p>
+  <p>Check out your events <%= link_to "here", runner_events_path %></p>
 </div>
 
 <div>

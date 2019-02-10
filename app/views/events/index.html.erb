@@ -9,6 +9,8 @@
 
 <button id="getEvents">Get Events Via JavaScript</button>
 
+<h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
+
 <script type="text/javascript" charset="utf-8">
 
   $(function() {
@@ -20,8 +22,9 @@
           let link = `<a href="/events/${id}">Check out this Event</a>`
           $("#event-" + id + "-description").text(description);
           $("#event-" + id + "-link").html(link);
+          $("#event-" + id).addClass("highlight");
         }
-        $("#eventsDiv").html(data + "whoa");
+        $("#getEvents").hide();
       })
     })
   })
