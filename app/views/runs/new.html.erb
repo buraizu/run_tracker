@@ -20,7 +20,6 @@
   <%= render partial: "form" %>
 </div>
 
-
 <div id="postResult">
 
   <p id="runCourse"></p>
@@ -68,7 +67,7 @@
         const rating = data["rating"];
         const run = new Run(course, distance, time, review, rating)
 
-        <!-- Perhaps have blank div and set className to "highlight" here? -->
+        $("#postResult").addClass("highlight");
         $("#runCourse").text(`Course: ${run.course}`);
         $("#runDistance").text(`Distance: ${run.distance}`);
         $("#runTime").text(`Time: ${run.time}`);
