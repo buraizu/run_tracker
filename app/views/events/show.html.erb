@@ -6,7 +6,7 @@
   <button class="getFinishers" data-id="<%= @event.id %>">Get finishers</button>
 
   <% @finishers.each do |finisher| %>
-    <div id="<%= finisher.id %>">
+    <div id="finisher-<%= finisher.id %>">
       <p id="finisher-<%= finisher.id %>-username"></p>
       <p id="finisher-<%= finisher.id %>-finish_time"></p>
     </div>
@@ -19,14 +19,14 @@
 <script type="text/javascript" charset="utf-8">
 
   $(".getFinishers").on("click", function() {
-
-    var id = parseInt(this.dataset["id"]);
+    const id = parseInt(this.dataset["id"]);
     $.get("/events/" + id + ".json", function(finishers) {
       for(let i = 0; i < finishers.length; i++) {
-        var finisher_id = finishers[i]["id"];
-
-        $("#finisher-" + finisher_id + "-username").text(`Username: ${finishers[i]["runner"].username}`)
-        $("#finisher-" + finisher_id + "-finish_time").text(`Finish Time: ${finishers[i].finish_time}`)
+        const finisher_id = finishers[i]["id"];
+        $("#finisher-" + finisher_id).addClass("highlight");
+        $("#finisher-" + finisher_id + "-username").text(`Completed by: ${finishers[i]["runner"].username}`)
+        $("#finisher-" + finisher_id + "-finish_time").text(`Finish Time: ${finishers[i].finish_time} minutes`)
+        $(".getFinishers").hide();
       }
     })
   })
