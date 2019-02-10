@@ -5,6 +5,13 @@
 
   <button class="getFinishers" data-id="<%= @event.id %>">Get finishers</button>
 
+  <% @finishers.each do |finisher| %>
+    <div id="<%= finisher.id %>">
+      <p id="finisher-<%= finisher.id %>-username"></p>
+      <p id="finisher-<%= finisher.id %>-finish_time"></p>
+    </div>
+  <% end %>
+
   <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
 
 </div>
@@ -12,9 +19,15 @@
 <script type="text/javascript" charset="utf-8">
 
   $(".getFinishers").on("click", function() {
-    var id = parseInt(this.dataset["id"])
-    $.get("/events/" + id + ".json", function(event) {
-      debugger;
+
+    var id = parseInt(this.dataset["id"]);
+    $.get("/events/" + id + ".json", function(finishers) {
+      for(let i = 0; i < finishers.length; i++) {
+        var finisher_id = finishers[i]["id"];
+
+        $("#finisher-" + finisher_id + "-username").text(`Username: ${finishers[i]["runner"].username}`)
+        $("#finisher-" + finisher_id + "-finish_time").text(`Finish Time: ${finishers[i].finish_time}`)
+      }
     })
   })
 
