@@ -2,12 +2,12 @@ class EventsController < ApplicationController
   before_action :check_privileges
 
   def index
-    @events = Event.all
-    @sorted_events = @events.sort { |eventA, eventB| eventA.description <=> eventB.description }
+    events = Event.all
+    @sorted_events = events.sort { |eventA, eventB| eventA.description <=> eventB.description }
 
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @events }
+      format.json { render json: @sorted_events }
     end
   end
 

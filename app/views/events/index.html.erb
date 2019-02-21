@@ -19,9 +19,10 @@
     $("#getEvents").on("click", function(){
       $.get("/events.json", function(data){
 
-        for(let key of data) {
-          const id = key["id"];
-          const description = key["description"];
+        for(var key in data) {
+        
+          const id = data[key].id;
+          const description = data[key].description;
           const link = `<a href="/events/${id}">Check out this Event</a>`
 
           $("#event-" + id + "-description").text(description);
