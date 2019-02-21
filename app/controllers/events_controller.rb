@@ -3,6 +3,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @sorted_events = @events.sort { |eventA, eventB| eventA.description <=> eventB.description }
+
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @events }

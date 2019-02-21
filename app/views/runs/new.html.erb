@@ -54,9 +54,9 @@
     $('form').submit(function(event) {
       event.preventDefault();
 
-      var values = $(this).serialize();
+      const values = $(this).serialize();
 
-      var posting = $.post('/runs', values);
+      const posting = $.post('/runs', values);
 
       posting.done(function(data) {
         const course = data["course"];
