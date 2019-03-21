@@ -22,8 +22,10 @@ class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
     if @run.valid? && @run.save
-
-      render json: @run, status: 201
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @run }
+      end
     else
       render :new
     end

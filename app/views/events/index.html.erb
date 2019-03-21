@@ -13,24 +13,35 @@
 
 <h3><%= link_to "Home", runner_path(current_runner.id) %></h3>
 
+<button id="sortEvents">Sort Events</button>
+
 <script type="text/javascript" charset="utf-8">
 
   $(function() {
-    $("#getEvents").on("click", function(){
+    $("#sortEvents").on("click", function(){
       $.get("/events.json", function(data){
+        $("#eventDiv").html("")
 
-        for(var key in data) {
-          const id = data[key].id;
-          const description = data[key].description;
-          const link = `<a href="/events/${id}">Check out this Event</a>`
+        let sortedRuns = data.sort(function(a, b) {
+          let eventA = a.description.toUpperCase(); // ignore upper and lowercase
+          let eventB = b.description.toUpperCase(); // ignore upper and lowercase
+          if (eventA < eventB) {
+            return -1;
+          }
+          if (eventA > eventB) {
+            return 1;
+          }
 
-          $("#event-" + id + "-description").text(description);
-          $("#event-" + id + "-link").html(link);
-          $("#event-" + id).addClass("highlight");
-        }
+          // names must be equal
+          return 0;
+        });
 
-        $("#getEvents").hide();
-        $("#eventDiv").append("<a href='http://localhost:3000/runner_events/new'>Set your Event</a>")
+        sortedRuns.forEach(run => $("#eventDiv").append(`
+            <div id="event-${run.id}">
+            <h3 id="event-${run.id}-description">${run.description}</h3>
+            <p id="event-${run.id}-link">See this run</p>
+          </div>`))
+
       })
     })
   })

@@ -2,8 +2,8 @@ class EventsController < ApplicationController
   before_action :check_privileges
 
   def index
-    events = Event.all
-    @sorted_events = events.sort { |eventA, eventB| eventA.description <=> eventB.description }
+    @sorted_events = Event.all
+    # @sorted_events = events.sort { |eventA, eventB| eventA.description <=> eventB.description }
 
     respond_to do |format|
       format.html { render :index }
